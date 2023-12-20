@@ -13,10 +13,7 @@ const app = express();
 
 const routes = require('./routes');
 
-app.use(routes);
-
 app.use(morgan('dev'));
-
 app.use(cookieParser());
 app.use(express.json());
 
@@ -39,5 +36,7 @@ app.use(
     }
   })
 );
+
+app.use(routes);
 
 module.exports = app;
