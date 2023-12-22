@@ -8,7 +8,6 @@ const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
-const router = express.Router();
 
 const validateLogin = [
   check('credential')
@@ -20,6 +19,8 @@ const validateLogin = [
     .withMessage('Please provide a password.'),
   handleValidationErrors
 ];
+
+const router = express.Router();
 
 router.post('/', validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
