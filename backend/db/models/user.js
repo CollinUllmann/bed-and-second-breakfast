@@ -9,17 +9,20 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Spot, {
         foreignKey: 'ownerId',
         onDelete: 'CASCADE',
-        hooks: true
+        hooks: true,
+        as: 'Owner'
       }),
         User.belongsToMany(models.Spot, {
           through: models.Booking,
           foreignKey: 'userId',
-          otherKey: 'spotId'
+          otherKey: 'spotId',
+          as: 'Booker'
         }),
         User.belongsToMany(models.Spot, {
           through: models.Review,
           foreignKey: 'userId',
-          otherKey: 'spotId'
+          otherKey: 'spotId',
+          as: 'Reviwer'
         })
     }
   };
