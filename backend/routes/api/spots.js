@@ -1,12 +1,11 @@
 const express = require('express');
-const { Op } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 const bcrypt = require('bcryptjs');
-const { Sequelize } = require('../../db/models')
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { Spot, Review, SpotImage, User } = require('../../db/models');
 
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const spotimage = require('../../db/models/spotimage');
 
@@ -145,6 +144,97 @@ router.get('/:spotId', async (req, res) => {
     "avgStarRating": spot.avgStarRating,
     "SpotImages": spot.SpotImages,
     "Owner": spot.Owner
+  })
+
+})
+
+//edit a spot
+router.put('/:spotId', requireAuth, async (req, res) => {
+  let spotId = req.params.spotId;
+  let user = req.user
+  let { address, city, state, country, lat, lng, name, description, price } = req.body;
+  let spot = await Spot.findByPk(spotId);
+
+  if (!spot) {
+    res.statusCode = 404;
+    return res.json({
+      "message": 'Spot couldn\'t be found'
+    })
+  }
+
+  if (user.id !== spot.ownerId) {
+    return res.json({
+      "message": 'Only the owner of the spot is authorized to make changes'
+    })
+  }
+
+  let errors = {};
+
+  if (!address) errors.address = "Street address is required";
+  if (!city) errors.city = "City is required";
+  if (!state) errors.state = "State is required";
+  if (!country) errors.country = "Country is required";
+  if (lat < -90 || lat > 90) errors.lat = "Latitude must be within -90 and 90";
+  if (lng < -180 || lng > 180) errors.lng = "Longitude must be within -180 and 180";
+  if (!name || name.length > 50) errors.name = "Name must be less than 50 characters";
+  if (!description) errors.description = "Description is required";
+  if (price < 0) errors.price = "Price per day must be a positive number"
+
+  if (Object.keys(errors).length > 0) {
+    res.statusCode = 400;
+    return res.json({
+      "message": "Bad Request",
+      errors
+    })
+  }
+
+  //I'm sure this is how it's supposed to be done, but I don't know how validationResult works
+  // const validationErrors = validationResult(req);
+  // if (!validationErrors.isEmpty()) {
+  //   res.statusCode = 400;
+  //   return res.json({
+  //     "message": "Bad Request",
+  //     errors
+  //   })
+  // }
+
+  spot.address = address;
+  spot.city = city;
+  spot.state = state;
+  spot.country = country;
+  spot.lat = lat;
+  spot.lng = lng;
+  spot.name = name;
+  spot.description = description;
+  spot.price = price;
+
+  await spot.save();
+
+  res.json(spot)
+})
+
+//delete a spot
+router.delete('/:spotId', requireAuth, async (req, res) => {
+  const spotId = req.params.spotId;
+  const userId = req.user.id;
+
+  const spot = await Spot.findByPk(spotId);
+  if (!spot) {
+    res.statusCode = 404;
+    return res.json({
+      "message": 'Spot couldn\'t be found'
+    })
+  }
+  if (spot.ownerId !== userId) {
+    return res.json({
+      "message": 'Only the owner of the spot is authorized to delete'
+    })
+  }
+
+  await spot.destroy();
+
+  res.json({
+    "message": 'Successfully deleted'
   })
 
 })
