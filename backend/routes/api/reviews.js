@@ -22,6 +22,113 @@ const validateLogin = [
 
 const router = express.Router();
 
+
+router.post('/:reviewId/images', requireAuth, async (req, res) => {
+  let userId = req.user.id;
+  let reviewId = req.params.reviewId;
+  const { url } = req.body;
+  let review = await Review.findByPk(reviewId);
+
+  if (!review) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Review couldn't be found"
+    })
+  }
+
+  if (review.userId !== userId) {
+    return res.json({
+      message: "Only the owner of the review is authorized to make changes"
+    })
+  }
+
+  let newReviewImage = await ReviewImage.create({
+    reviewId,
+    url
+  })
+
+  return res.json({
+    id: newReviewImage.id,
+    url: newReviewImage.url
+  })
+})
+
+//edit a review
+//still need to enforce that stars is an integer rather than just a number
+router.put('/:reviewId', requireAuth, async (req, res) => {
+  let reviewId = req.params.reviewId;
+  let userId = req.user.id;
+  let { review, stars } = req.body;
+
+  let existingReview = await Review.findByPk(reviewId);
+  if (!existingReview) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Review couldn't be found"
+    })
+  }
+
+  let errors = {};
+  if (!review) errors.review = "Review text is required";
+  if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5) errors.stars = "Stars must be an integer from 1 to 5";
+  if (Object.keys(errors).length > 0) {
+    res.statusCode = 400;
+    res.json({
+      message: "Bad Request",
+      errors
+    })
+  }
+
+  if (existingReview.userId !== userId) {
+    return res.json({
+      message: "Only the owner of the review is authorized to make changes"
+    })
+  }
+
+  existingReview.review = review;
+  existingReview.stars = stars;
+
+  await existingReview.save();
+
+  return res.json({
+    id: existingReview.id,
+    userId: existingReview.userId,
+    spotId: existingReview.spotId,
+    review: existingReview.review,
+    stars: existingReview.stars,
+    createdAt: existingReview.createdAt,
+    updatedAt: existingReview.updatedAt
+  })
+})
+
+//delete a review
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+  let reviewId = req.params.reviewId;
+  let userId = req.user.id;
+  let existingReview = await Review.findByPk(reviewId);
+
+  if (!existingReview) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Review couldn't be found"
+    })
+  }
+
+  console.log(existingReview.userId)
+  if (existingReview.userId !== userId) {
+    return res.json({
+      message: "Only the owner of the review is authorized to delete"
+    })
+  }
+
+  await existingReview.destroy();
+
+  return res.json({
+    message: "Successfully deleted"
+  })
+
+})
+
 //get all reviews of current user
 //still missing previewImage on Spot
 //also the format isn't quite right, since the response needs to be in an object with Reviews property (Check API Docs)

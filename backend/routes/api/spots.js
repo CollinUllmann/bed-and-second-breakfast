@@ -3,11 +3,12 @@ const { Op, Sequelize } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, User, ReviewImage } = require('../../db/models');
+const { Spot, Review, SpotImage, User, ReviewImage, Booking } = require('../../db/models');
 
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const spotimage = require('../../db/models/spotimage');
+const booking = require('../../db/models/booking');
 
 const validateLogin = [
   check('credential')
@@ -104,6 +105,42 @@ router.get('/:spotId/reviews', async (req, res) => {
   res.json({
     Reviews: reviews
   })
+})
+
+//get all bookings for a spot based on the spot's id
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+  const spotId = req.params.spotId;
+  let spot = await Spot.findByPk(spotId)
+  const userId = req.user.id;
+
+
+  if (spot.ownerId === userId) {
+    let ownerBookings = await Booking.findAll({
+      where: {
+        spotId: spotId
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'firstName', 'lastName']
+        }
+      ]
+    })
+    return res.json({
+      Bookings: ownerBookings
+    })
+  } else {
+    let userBookings = await Booking.findAll({
+      where: {
+        spotId: spotId
+      },
+      attributes: ['spotId', 'startDate', 'endDate']
+    })
+    return res.json({
+      Bookings: userBookings
+    })
+  }
+
 })
 
 //create a review for a spot based on the spot's id
