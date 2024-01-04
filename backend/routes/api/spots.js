@@ -3,7 +3,7 @@ const { Op, Sequelize } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, User } = require('../../db/models');
+const { Spot, Review, SpotImage, User, ReviewImage } = require('../../db/models');
 
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -81,6 +81,77 @@ router.get('/current', requireAuth, async (req, res) => {
   })
 
 });
+
+//get all reviews by a spot's id
+router.get('/:spotId/reviews', async (req, res) => {
+  const spotId = req.params.spotId;
+  const reviews = await Review.findAll({
+    where: {
+      spotId: spotId
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'firstName', 'lastName']
+      },
+      {
+        model: ReviewImage,
+        attributes: ['id', 'url']
+      }
+    ]
+  })
+
+  res.json({
+    Reviews: reviews
+  })
+})
+
+//create a review for a spot based on the spot's id
+//still need to enforce stars being an integer rather than just a number
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+  const spotId = req.params.spotId
+  const { review, stars } = req.body;
+  const userId = req.user.id;
+
+  const spot = await Spot.findByPk(spotId);
+  if (!spot) {
+    res.statusCode = 404;
+    return res.json({ message: 'Spot couldn\'t be found' })
+  }
+
+  let errors = {};
+  if (!review) errors.review = 'Review text is required';
+  if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5) errors.stars = 'Stars must be an integer from 1 to 5'
+  if (Object.keys(errors).length > 0) {
+    res.statusCode = 400;
+    return res.json({
+      message: "Bad Request",
+      errors
+    })
+  }
+
+  const existingReview = await Review.findAll({
+    where: {
+      spotId: spotId,
+      userId: userId
+    }
+  })
+  if (existingReview.length > 0) {
+    res.statusCode = 500;
+    return res.json({
+      message: 'User already has a review for this spot'
+    })
+  }
+
+  const newReview = await Review.create({
+    userId,
+    spotId,
+    review,
+    stars
+  })
+
+  res.json(newReview)
+})
 
 // beginnings of getting spot details by id
 router.get('/:spotId', async (req, res) => {
