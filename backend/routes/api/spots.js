@@ -9,6 +9,7 @@ const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const spotimage = require('../../db/models/spotimage');
 const booking = require('../../db/models/booking');
+const { contentSecurityPolicy } = require('helmet');
 
 const validateLogin = [
   check('credential')
@@ -113,6 +114,12 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   let spot = await Spot.findByPk(spotId)
   const userId = req.user.id;
 
+  if (!spot) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Spot couldn't be found"
+    })
+  }
 
   if (spot.ownerId === userId) {
     let ownerBookings = await Booking.findAll({
@@ -143,8 +150,88 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
 })
 
+//create a booking from a spot based on the spot's id
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
+  let userId = req.user.id;
+  let spotId = req.params.spotId;
+  let spot = await Spot.findByPk(spotId);
+
+  if (spot.ownerId === userId) {
+    return res.json({
+      message: "Spot cannot be booked by owner"
+    })
+  }
+
+  let { startDate, endDate } = req.body;
+  let currentDate = new Date();
+
+
+  startDate = new Date(startDate);
+  endDate = new Date(endDate)
+
+
+  let errors = {};
+  if (currentDate.getTime() > startDate.getTime()) {
+    errors.startDate = "startDate cannot be in the past"
+  }
+
+  if (startDate.getTime() >= endDate.getTime()) {
+    errors.endDate = "endDate cannot be on or before startDate"
+  }
+
+  if (Object.keys(errors).length > 0) {
+    return res.json({
+      message: "Bad Request",
+      errors
+    })
+  }
+
+  let bookingErrors = {};
+  let existingBookings = await Booking.findAll({
+    where: {
+      spotId: spotId
+    }
+  })
+  existingBookings.forEach(booking => {
+    let existingStartDate = booking.startDate.getTime();
+    let existingEndDate = booking.endDate.getTime();
+    let newStartDate = startDate.getTime();
+    let newEndDate = endDate.getTime()
+    if (newStartDate >= existingStartDate && newStartDate <= existingEndDate) {
+      bookingErrors.startDate = "Start date conflicts with an existing booking"
+    }
+    if (newEndDate >= existingStartDate && newEndDate <= existingEndDate) {
+      bookingErrors.endDate = "End date conflicts with an existing booking"
+    }
+    if (newStartDate <= existingStartDate && newEndDate >= existingEndDate) {
+      bookingErrors.startDate = "Start date conflicts with an existing booking";
+      bookingErrors.endDate = "End date conflicts with an existing booking"
+    }
+  })
+
+  if (Object.keys(bookingErrors).length > 0) {
+    return res.json({
+      message: "Sorry, this spot is already booked for the specified dates",
+      errors: bookingErrors
+    })
+  }
+
+
+
+
+  let newBooking = await Booking.create({
+    spotId,
+    userId,
+    startDate,
+    endDate
+  })
+
+  return res.json(newBooking)
+
+
+})
+
 //create a review for a spot based on the spot's id
-//still need to enforce stars being an integer rather than just a number
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   const spotId = req.params.spotId
   const { review, stars } = req.body;
@@ -158,7 +245,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
   let errors = {};
   if (!review) errors.review = 'Review text is required';
-  if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5) errors.stars = 'Stars must be an integer from 1 to 5'
+  if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5 || stars !== Math.floor(stars)) errors.stars = 'Stars must be an integer from 1 to 5'
   if (Object.keys(errors).length > 0) {
     res.statusCode = 400;
     return res.json({
@@ -296,15 +383,6 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     })
   }
 
-  //I'm sure this is how it's supposed to be done, but I don't know how validationResult works
-  // const validationErrors = validationResult(req);
-  // if (!validationErrors.isEmpty()) {
-  //   res.statusCode = 400;
-  //   return res.json({
-  //     "message": "Bad Request",
-  //     errors
-  //   })
-  // }
 
   spot.address = address;
   spot.city = city;

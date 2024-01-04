@@ -54,7 +54,6 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 })
 
 //edit a review
-//still need to enforce that stars is an integer rather than just a number
 router.put('/:reviewId', requireAuth, async (req, res) => {
   let reviewId = req.params.reviewId;
   let userId = req.user.id;
@@ -70,7 +69,7 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
 
   let errors = {};
   if (!review) errors.review = "Review text is required";
-  if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5) errors.stars = "Stars must be an integer from 1 to 5";
+  if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5 || stars !== Math.floor(stars)) errors.stars = "Stars must be an integer from 1 to 5";
   if (Object.keys(errors).length > 0) {
     res.statusCode = 400;
     res.json({
@@ -130,8 +129,6 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
 })
 
 //get all reviews of current user
-//still missing previewImage on Spot
-//also the format isn't quite right, since the response needs to be in an object with Reviews property (Check API Docs)
 router.get('/current', requireAuth, async (req, res) => {
   let userId = req.user.id;
   let reviews = await Review.findAll({
@@ -146,12 +143,32 @@ router.get('/current', requireAuth, async (req, res) => {
       {
         model: Spot,
         attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'price'],
+        include: [
+          {
+            model: SpotImage,
+            where: {
+              preview: true
+            },
+            attributes: ['url']
+          }
+        ]
       },
       {
         model: ReviewImage,
         attributes: ['id', 'url']
       }
     ]
+  });
+
+  reviews = reviews.map(review => {
+    review = review.toJSON();
+    if (review.Spot.SpotImages && review.Spot.SpotImages.length > 0) {
+      review.Spot.previewImage = review.Spot.SpotImages[0].url
+    } else {
+      review.Spot.previewImage = '';
+    }
+    delete review.Spot.SpotImages;
+    return review;
   });
 
   res.json({
