@@ -583,22 +583,42 @@ router.get('/', async (req, res) => {
 
   let spotIds = spots.map(spot => spot.id)
 
-  const avgRatings = await Review.findAll({
-    attributes: [
-      [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = spotId)'), 'avgRating'],
-      'spotId'
-    ],
-    where: {
-      spotId: spotIds
-    },
-    group: ['spotId']
-  })
+  let avgRatingBySpotId = {};
+
+  for (let spotId of spotIds) {
+    let totalStars = await Review.sum('stars', {
+      where: {
+        spotId: spotId
+      }
+    });
+    let totalReviews = await Review.count({
+      where: {
+        spotId: spotId
+      }
+    });
+
+    let avgRating = totalStars / totalReviews;
+
+    avgRatingBySpotId[spotId] = avgRating;
+  }
 
 
-  const avgRatingBySpotId = avgRatings.reduce((acc, { dataValues }) => {
-    acc[dataValues.spotId] = parseFloat(dataValues.avgRating || 0);
-    return acc;
-  }, {})
+  // const avgRatings = await Review.findAll({
+  //   attributes: [
+  //     [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = spotId)'), 'avgRating'],
+  //     'spotId'
+  //   ],
+  //   where: {
+  //     spotId: spotIds
+  //   },
+  //   group: ['spotId']
+  // })
+
+
+  // const avgRatingBySpotId = avgRatings.reduce((acc, { dataValues }) => {
+  //   acc[dataValues.spotId] = parseFloat(dataValues.avgRating || 0);
+  //   return acc;
+  // }, {})
 
   let returnSpots = spots.map(spot => ({
     id: spot.id,
