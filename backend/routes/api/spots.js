@@ -482,57 +482,179 @@ router.post('/', requireAuth, async (req, res) => {
 })
 
 //get all spots
+// router.get('/', async (req, res) => {
+//   let spots = await Spot.findAll();
+//   let spotImages = await SpotImage.findAll();
+//   let reviews = await Review.findAll();
+
+//   let spotList = [];
+//   let spotImageList = [];
+//   let reviewList = [];
+
+//   spots.forEach(spot => {
+//     spotList.push(spot.toJSON());
+//   })
+//   spotImages.forEach(image => {
+//     spotImageList.push(image.toJSON());
+//   })
+//   reviews.forEach(review => {
+//     reviewList.push(review.toJSON());
+//   })
+
+//   //get preview image onto response object
+//   spotImageList.forEach(image => {
+//     spotList.forEach(spot => {
+//       if (image.spotId === spot.id && image.preview) {
+//         spot.previewImage = image.url
+//       }
+//     })
+//   })
+
+//   //get avgRating onto response object
+//   spotList.forEach(spot => {
+//     let totalStars = 0;
+//     let numReviews = 0;
+//     reviewList.forEach(review => {
+//       if (review.spotId === spot.id && review.stars !== null) {
+//         totalStars += review.stars;
+//         numReviews += 1;
+//       }
+//     })
+//     spot.avgRating = totalStars / numReviews;
+//   })
+
+//   res.json({
+//     Spots: spotList
+//   })
+// });
+
 router.get('/', async (req, res) => {
-  let spots = await Spot.findAll();
+  let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
 
-  let spotImages = await SpotImage.findAll();
 
-  let reviews = await Review.findAll();
+  page = parseInt(page) || 1;
+  size = parseInt(size) || 20;
+  minLat = parseFloat(minLat);
+  maxLat = parseFloat(maxLat);
+  minLng = parseFloat(minLng);
+  maxLng = parseFloat(maxLng);
+  minPrice = parseFloat(minPrice);
+  maxPrice = parseFloat(maxPrice);
 
-  let spotList = [];
+  let filters = {};
+  let filterErrors = {};
+  if (isNaN(page) || page < 1 || page > 10) {
+    filterErrors.page = "Page must be greater than or equal to 1"
+  }
 
-  let spotImageList = [];
+  if (isNaN(size) || size < 1 || size > 20) {
+    filterErrors.size = "Size must be greater than or equal to 1"
+  }
 
-  let reviewList = [];
+  if (!isNaN(minLat)) {
+    filters.lat = { [Op.gte]: minLat }
+  } else if (minLat) {
+    filterErrors.minLat = "Minimum latitude is invalid"
+  }
 
-  spots.forEach(spot => {
-    spotList.push(spot.toJSON());
-  })
+  if (!isNaN(maxLat)) {
+    filters.lat = { ...filters.lat, [Op.lte]: maxLat };
+  } else if (maxLat) {
+    filterErrors.maxLat = "Maximum latitude is invalid"
+  }
 
-  spotImages.forEach(image => {
-    spotImageList.push(image.toJSON());
-  })
+  if (!isNaN(minLng)) {
+    filters.lng = { [Op.gte]: minLng };
+  } else if (minLng) {
+    filterErrors.minLng = "Minimum latitude is invalid"
+  }
 
-  reviews.forEach(review => {
-    reviewList.push(review.toJSON());
-  })
+  if (!isNaN(maxLng)) {
+    filters.lng = { ...filters.lng, [Op.lte]: maxLng };
+  } else if (maxLng) {
+    filterErrors.maxLng = "Maximum longitude is invalid"
+  }
 
-  //get preview image onto response object
-  spotImageList.forEach(image => {
-    spotList.forEach(spot => {
-      if (image.spotId === spot.id && image.preview) {
-        spot.previewImage = image.url
-      }
+  if (!isNaN(minPrice) && minPrice > 0) {
+    filters.price = { [Op.gte]: minPrice };
+  } else if (minPrice) {
+    filterErrors.minPrice = "Minimum price must be greater than or equal to 0"
+  }
+
+  if (!isNaN(maxPrice) && maxPrice > 0) {
+    filters.price = { ...filters.price, [Op.lte]: maxPrice };
+  } else if (maxPrice) {
+    filterErrors.maxPrice = "Maximum price must be greater than or equal to 0"
+  }
+
+  if (Object.keys(filterErrors).length > 0) {
+    res.statusCode = 400;
+    return res.json({
+      message: "Bad Request",
+      errors: filterErrors
     })
-  })
+  }
 
-  //get avgRating onto response object
-  spotList.forEach(spot => {
-    let totalStars = 0;
-    let numReviews = 0;
-    reviewList.forEach(review => {
-      if (review.spotId === spot.id && review.stars !== null) {
-        totalStars += review.stars;
-        numReviews += 1;
+  const spots = await Spot.findAll({
+    where: {
+      ...filters
+    },
+    offset: size * (page - 1),
+    limit: size,
+    attributes: [
+      'id',
+      'ownerId',
+      'address',
+      'city',
+      'state',
+      'country',
+      'lat',
+      'lng',
+      'name',
+      'description',
+      'price',
+      'createdAt',
+      'updatedAt',
+      [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = Spot.id)'), 'avgRating']
+    ],
+    include: [
+      {
+        model: SpotImage,
+        attributes: ['url'],
+        where: {
+          preview: true
+        },
+        required: false
       }
-    })
-    spot.avgRating = totalStars / numReviews;
-  })
+    ]
+  });
+
+  let returnSpots = spots.map(spot => ({
+    id: spot.id,
+    ownerId: spot.ownerId,
+    address: spot.address,
+    city: spot.city,
+    state: spot.state,
+    country: spot.country,
+    lat: spot.lat,
+    lng: spot.lng,
+    name: spot.name,
+    description: spot.description,
+    price: spot.price,
+    createdAt: spot.createdAt,
+    updatedAt: spot.updatedAt,
+    avgRating: parseFloat(spot.getDataValue('avgRating') || 0),
+    previewImage: spot.SpotImages.length ? spot.SpotImages[0].url : ''
+  }))
 
   res.json({
-    Spots: spotList
-  })
+    Spots: returnSpots,
+    page,
+    size
+  });
+
 });
+
 
 
 
