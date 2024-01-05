@@ -615,7 +615,7 @@ router.get('/', async (req, res) => {
       'price',
       'createdAt',
       'updatedAt',
-      [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = Spot.id)'), 'avgRating']
+      // [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = Spot.id)'), 'avgRating']
     ],
     include: [
       {
