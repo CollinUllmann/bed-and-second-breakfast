@@ -37,8 +37,9 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
   }
 
   if (review.userId !== userId) {
+    res.statusCode = 403;
     return res.json({
-      message: "Only the owner of the review is authorized to make changes"
+      message: "Forbidden"
     })
   }
 
@@ -79,8 +80,9 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
   }
 
   if (existingReview.userId !== userId) {
+    res.statusCode = 403;
     return res.json({
-      message: "Only the owner of the review is authorized to make changes"
+      message: "Forbidden"
     })
   }
 
@@ -115,8 +117,9 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
 
   console.log(existingReview.userId)
   if (existingReview.userId !== userId) {
+    res.statusCode = 403;
     return res.json({
-      message: "Only the owner of the review is authorized to delete"
+      message: "Forbidden"
     })
   }
 

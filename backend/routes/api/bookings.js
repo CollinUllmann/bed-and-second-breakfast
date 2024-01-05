@@ -38,8 +38,9 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
   }
 
   if (bookingToEdit.userId !== userId) {
+    res.statusCode = 403;
     return res.json({
-      message: "Only the owner of the booking is authorized to make changes"
+      message: "Forbidden"
     })
   }
 
@@ -116,8 +117,9 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
   }
 
   if (bookingToDelete.userId !== userId) {
+    res.statusCode = 403;
     return res.json({
-      message: "Only the owner of the booking is authorized to delete"
+      message: "Forbidden"
     })
   }
 

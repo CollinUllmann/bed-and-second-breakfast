@@ -358,8 +358,9 @@ router.put('/:spotId', requireAuth, async (req, res) => {
   }
 
   if (user.id !== spot.ownerId) {
+    res.statusCode = 403;
     return res.json({
-      "message": 'Only the owner of the spot is authorized to make changes'
+      "message": 'Forbidden'
     })
   }
 
@@ -412,8 +413,9 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     })
   }
   if (spot.ownerId !== userId) {
+    res.statusCode = 403;
     return res.json({
-      "message": 'Only the owner of the spot is authorized to delete'
+      "message": 'Forbidden'
     })
   }
 
@@ -441,7 +443,10 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
   }
 
   if (req.user.id !== spot.ownerId) {
-    throw new Error('User not authorized')
+    res.statusCode = 403;
+    return res.json({
+      message: "Forbidden"
+    })
   }
 
   let { url, preview } = req.body;
