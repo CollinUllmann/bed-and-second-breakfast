@@ -481,53 +481,6 @@ router.post('/', requireAuth, async (req, res) => {
   res.json(newSpot)
 })
 
-//get all spots
-// router.get('/', async (req, res) => {
-//   let spots = await Spot.findAll();
-//   let spotImages = await SpotImage.findAll();
-//   let reviews = await Review.findAll();
-
-//   let spotList = [];
-//   let spotImageList = [];
-//   let reviewList = [];
-
-//   spots.forEach(spot => {
-//     spotList.push(spot.toJSON());
-//   })
-//   spotImages.forEach(image => {
-//     spotImageList.push(image.toJSON());
-//   })
-//   reviews.forEach(review => {
-//     reviewList.push(review.toJSON());
-//   })
-
-//   //get preview image onto response object
-//   spotImageList.forEach(image => {
-//     spotList.forEach(spot => {
-//       if (image.spotId === spot.id && image.preview) {
-//         spot.previewImage = image.url
-//       }
-//     })
-//   })
-
-//   //get avgRating onto response object
-//   spotList.forEach(spot => {
-//     let totalStars = 0;
-//     let numReviews = 0;
-//     reviewList.forEach(review => {
-//       if (review.spotId === spot.id && review.stars !== null) {
-//         totalStars += review.stars;
-//         numReviews += 1;
-//       }
-//     })
-//     spot.avgRating = totalStars / numReviews;
-//   })
-
-//   res.json({
-//     Spots: spotList
-//   })
-// });
-
 router.get('/', async (req, res) => {
   let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
 
@@ -615,7 +568,6 @@ router.get('/', async (req, res) => {
       'price',
       'createdAt',
       'updatedAt',
-      // [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = Spot.id)'), 'avgRating']
     ],
     include: [
       {
@@ -628,6 +580,25 @@ router.get('/', async (req, res) => {
       }
     ]
   });
+
+  let spotIds = spots.map(spot => spot.id)
+
+  const avgRatings = await Review.findAll({
+    attributes: [
+      [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = spotId)'), 'avgRating'],
+      'spotId'
+    ],
+    where: {
+      spotId: spotIds
+    },
+    group: ['spotId']
+  })
+
+
+  const avgRatingBySpotId = avgRatings.reduce((acc, { dataValues }) => {
+    acc[dataValues.spotId] = parseFloat(dataValues.avgRating || 0);
+    return acc;
+  }, {})
 
   let returnSpots = spots.map(spot => ({
     id: spot.id,
@@ -643,7 +614,7 @@ router.get('/', async (req, res) => {
     price: spot.price,
     createdAt: spot.createdAt,
     updatedAt: spot.updatedAt,
-    avgRating: parseFloat(spot.getDataValue('avgRating') || 0),
+    avgRating: avgRatingBySpotId[spot.id] || 0,
     previewImage: spot.SpotImages.length ? spot.SpotImages[0].url : ''
   }))
 
