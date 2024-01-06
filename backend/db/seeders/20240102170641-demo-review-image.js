@@ -22,17 +22,33 @@ module.exports = {
     */
     await ReviewImage.bulkCreate([
       {
-        reviewId: 1,
-        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-20445002/original/e4d0b62c-8f52-43e6-a1c8-70298122a1f8.jpeg?im_w=1440'
+        reviewId: 7,
+        url: 'https://i.redd.it/jwkgxcicnnv91.jpg'
       },
       {
-        reviewId: 2,
-        url: 'https://a0.muscache.com/im/pictures/2499b885-3ef1-44c6-9139-584448d1fe68.jpg?im_w=1440'
+        reviewId: 8,
+        url: 'https://i.ytimg.com/vi/ab-iVi2WbW0/maxresdefault.jpg'
+      },
+      {
+        reviewId: 16,
+        url: 'https://static.wikia.nocookie.net/lotr/images/1/14/Frodo_Baggins_Stabbed.png/revision/latest?cb=20181014232238'
+      },
+      {
+        reviewId: 4,
+        url: 'https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/03/lotr-merrypippin.jpg'
+      },
+      {
+        reviewId: 1,
+        url: 'https://i.stack.imgur.com/nyo7F.jpg'
+      },
+      {
+        reviewId: 6,
+        url: 'https://m.media-amazon.com/images/M/MV5BYTA3NGU2NzItZmYzYy00M2EzLWEyYjgtODU4MjMzMWZlMDQzXkEyXkFqcGdeQXVyOTc5MDI5NjE@._V1_.jpg'
       },
       {
         reviewId: 3,
-        url: 'https://images.contentstack.io/v3/assets/blt00454ccee8f8fe6b/blt45998f4cccc40ff4/61810cb19dce4f6f63ede709/US_Philadelphia_US_Header.jpg?width=1440&quality=70&auto=webp'
-      }
+        url: 'https://pbs.twimg.com/media/EfZTPvsVAAEr3WG.jpg'
+      },
     ], { validate: true })
   },
 
@@ -46,7 +62,7 @@ module.exports = {
     options.tableName = 'ReviewImages';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      reviewId: { [Op.in]: [1, 2, 3] }
+      reviewId: { [Op.in]: [1, 2, 3, 4, 5, 6, 7] }
     }, {})
   }
 };

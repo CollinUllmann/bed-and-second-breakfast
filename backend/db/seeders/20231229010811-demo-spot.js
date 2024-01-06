@@ -22,40 +22,112 @@ module.exports = {
     */
     await Spot.bulkCreate([
       {
-        ownerId: 1,
-        address: '457 Sierra Vista Ave',
-        city: 'Mountain View',
-        state: 'CA',
-        country: 'United States',
-        lat: 37.40833827970457,
-        lng: -122.08898365660286,
-        name: 'Google Playground',
-        description: 'This apartment is, according to Google Maps, located near Google headquarters so it probably costs a lot of money.',
-        price: 625.00
-      },
-      {
         ownerId: 2,
-        address: '1327 H St Unit 206',
-        city: 'Las Vegas',
-        state: 'NV',
-        country: 'United States',
-        lat: 36.18573519522409,
-        lng: -115.15283616195674,
-        name: 'Vegas Apartments',
-        description: 'I went to Vegas and bought the first apartment I saw. This is it. Pay me money.',
-        price: 850.00
+        address: '1 Bag End Dr',
+        city: 'Hobbiton',
+        state: 'The Shire',
+        country: 'Middle-earth',
+        lat: -37.9136,
+        lng: 175.4786,
+        name: 'Bag End',
+        description: 'Charming hobbit hole with a round door. No visitors except on party business',
+        price: 80
       },
       {
-        ownerId: 3,
-        address: '1634-38 Lombard St',
-        city: 'Philadelphia',
-        state: 'PA',
-        country: 'United States',
-        lat: 39.945367545139604,
-        lng: -75.16830362982286,
-        name: 'Apartment of Brotherly Love',
-        description: 'It ain\'t much, but it\'s mine. Give me money.',
-        price: 500.00
+        ownerId: 10,
+        address: '777 Last Homely House Ct',
+        city: 'Imladris',
+        state: 'Eriador',
+        country: 'Middle-earth',
+        lat: 39.2041,
+        lng: -106.8370,
+        name: 'Rivendell',
+        description: 'Serene elven refuge nestled amidst beautiful waterfalls. The ideal get away.',
+        price: 120
+      },
+      {
+        ownerId: 4,
+        address: '1068 Summit Circle',
+        city: 'Amon Sul',
+        state: 'Eriador',
+        country: 'Middle-earth',
+        lat: 39.7036,
+        lng: -105.4955,
+        name: 'Weathertop',
+        description: 'Scenic ancient ruins. Great spot for a picnic at sunset!',
+        price: 90
+      },
+      {
+        ownerId: 9,
+        address: '666 Caradhras Point',
+        city: 'Khazad-dum',
+        state: 'Eriador',
+        country: 'Middle-earth',
+        lat: 56.1317,
+        lng: -3.9403,
+        name: 'Mines of Moria',
+        description: 'Historical dwarven kingdom turned adventurous underground escape room.',
+        price: 100
+      },
+      {
+        ownerId: 8,
+        address: '246 Lothlorien Ave',
+        city: 'Caras Galadhon',
+        state: 'Lothlorien',
+        country: 'Middle-earth',
+        lat: 47.6062,
+        lng: -122.3321,
+        name: 'Lothlorien',
+        description: 'Enchanting treetop city, home to graceful elves. Experience treehouse living!',
+        price: 150
+      },
+      {
+        ownerId: 4,
+        address: '751 Citadel Way',
+        city: 'Minas Tirith',
+        state: 'Gondor',
+        country: 'Middle-earth',
+        lat: 51.4545,
+        lng: -2.5879,
+        name: 'Minas Tirith',
+        description: 'Historic seven-tiered city with breathtaking views.',
+        price: 160
+      },
+      {
+        ownerId: 4,
+        address: '583 Kingly Ct',
+        city: 'Osgiliath',
+        state: 'Gondor',
+        country: 'Middle-earth',
+        lat: 51.5074,
+        lng: -0.1278,
+        name: 'Osgiliath',
+        description: 'Once a great city, now a picturesque riverside spot.',
+        price: 90
+      },
+      {
+        ownerId: 7,
+        address: '1 Saruman Circle',
+        city: 'Isengard',
+        state: 'Enedwaith',
+        country: 'Middle-earth',
+        lat: 43.7711,
+        lng: 11.2486,
+        name: 'Orthanc',
+        description: 'Impressive black tower offering unparalleled views of Fangorn Forest.',
+        price: 120
+      },
+      {
+        ownerId: 9,
+        address: '30 miles east of Mount Doom',
+        city: 'Mordor',
+        state: 'Mordor',
+        country: 'Middle-earth',
+        lat: 40.7128,
+        lng: -74.0060,
+        name: 'Barad-dur',
+        description: 'Iconic dark fortress with stunning volcanic views. Ideal for world domination enthusiasts!',
+        price: 180
       },
     ], { validate: true })
   },
@@ -70,7 +142,7 @@ module.exports = {
     options.tableName = 'Spots';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      name: { [Op.in]: ['Google Playground', 'Vegas Apartments', 'Apartment of Brotherly Love'] }
+      name: { [Op.in]: ['Bag End', 'Rivendell', 'Weathertop', 'Mines of Moria', 'Lothlorien', 'Minas Tirith', 'Osgiliath', 'Orthanc', 'Barad-dur'] }
     }, {})
   }
 };
