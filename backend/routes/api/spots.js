@@ -57,6 +57,10 @@ router.get('/current', requireAuth, async (req, res) => {
     reviewList.push(review.toJSON())
   })
 
+  spotList.forEach(spot => {
+    spot.previewImage = "No preview image"
+  })
+
 
   spotImageList.forEach(image => {
     spotList.forEach(spot => {
@@ -75,7 +79,9 @@ router.get('/current', requireAuth, async (req, res) => {
         numReviews += 1;
       }
     })
-    spot.avgRating = totalStars / numReviews;
+
+    let avgRating = totalStars / numReviews;
+    spot.avgRating = Math.floor(avgRating)
   })
 
   res.json({
@@ -654,22 +660,6 @@ router.get('/', async (req, res) => {
   }
 
 
-  // const avgRatings = await Review.findAll({
-  //   attributes: [
-  //     [Sequelize.literal('(SELECT AVG(stars) FROM Reviews WHERE Reviews.spotId = spotId)'), 'avgRating'],
-  //     'spotId'
-  //   ],
-  //   where: {
-  //     spotId: spotIds
-  //   },
-  //   group: ['spotId']
-  // })
-
-
-  // const avgRatingBySpotId = avgRatings.reduce((acc, { dataValues }) => {
-  //   acc[dataValues.spotId] = parseFloat(dataValues.avgRating || 0);
-  //   return acc;
-  // }, {})
 
   let returnSpots = spots.map(spot => ({
     id: spot.id,
