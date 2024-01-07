@@ -176,7 +176,7 @@ router.get('/current', requireAuth, async (req, res) => {
     if (booking.Spot.SpotImages && booking.Spot.SpotImages.length > 0) {
       booking.Spot.previewImage = booking.Spot.SpotImages[0].url
     } else {
-      booking.Spot.previewImage = '';
+      booking.Spot.previewImage = 'No preview image';
     }
     delete booking.Spot.SpotImages;
     return booking;

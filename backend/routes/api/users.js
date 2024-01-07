@@ -12,19 +12,22 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+//sign up a user
 router.post('/', async (req, res) => {
   const { email, password, username, firstName, lastName } = req.body;
 
   let validationErrors = {};
   if (!email || !isEmail(email)) validationErrors.email = "Invalid email"
 
+  if (!username || username.length < 4) validationErrors.username = "Please provide a username with at least 4 characters"
+
+  if (!username || isEmail(username)) validationErrors.username = "Username cannot be an email"
+
   if (!username) validationErrors.username = "Username is required"
 
-  if (username.length < 4) validationErrors.username = "Please provide a username with at least 4 characters"
-
-  if (isEmail(username)) validationErrors.username = "Username cannot be an email"
-
   if (!password || password.length < 6) validationErrors.password = "Password must be 6 characters or more"
+
+  if (!password) validationErrors.password = "Password is required"
 
   if (!firstName) validationErrors.firstName = "First Name is required"
 

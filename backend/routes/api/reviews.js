@@ -181,7 +181,7 @@ router.get('/current', requireAuth, async (req, res) => {
     if (review.Spot.SpotImages && review.Spot.SpotImages.length > 0) {
       review.Spot.previewImage = review.Spot.SpotImages[0].url
     } else {
-      review.Spot.previewImage = '';
+      review.Spot.previewImage = 'No preview image';
     }
     delete review.Spot.SpotImages;
     return review;

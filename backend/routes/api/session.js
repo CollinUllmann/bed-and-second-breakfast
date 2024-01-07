@@ -12,6 +12,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+//log in a user
 router.post('/', async (req, res, next) => {
   const { credential, password } = req.body;
 
@@ -64,12 +65,14 @@ router.post('/', async (req, res, next) => {
 }
 );
 
+//log out the current user
 router.delete('/', (_req, res) => {
   res.clearCookie('token');
   return res.json({ message: 'success' });
 }
 );
 
+//get the current user
 router.get('/', (req, res) => {
   const { user } = req;
   if (user) {
