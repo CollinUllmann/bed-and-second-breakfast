@@ -103,6 +103,15 @@ router.get('/:spotId/reviews', async (req, res) => {
     ]
   })
 
+  let existingSpot = await Spot.findByPk(spotId)
+
+  if (!existingSpot) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Spot couldn't be found"
+    })
+  }
+
   res.json({
     Reviews: reviews
   })
@@ -156,7 +165,15 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   let spotId = req.params.spotId;
   let spot = await Spot.findByPk(spotId);
 
+  if (!spot) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Spot couldn't be found"
+    })
+  }
+
   if (spot.ownerId === userId) {
+    res.statusCode = 403;
     return res.json({
       message: "Spot cannot be booked by owner"
     })
@@ -180,6 +197,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   }
 
   if (Object.keys(errors).length > 0) {
+    res.statusCode = 400;
     return res.json({
       message: "Bad Request",
       errors
@@ -210,6 +228,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   })
 
   if (Object.keys(bookingErrors).length > 0) {
+    res.statusCode = 403;
     return res.json({
       message: "Sorry, this spot is already booked for the specified dates",
       errors: bookingErrors
@@ -277,7 +296,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   res.json(newReview)
 })
 
-// beginnings of getting spot details by id
+//get spot details by id
 router.get('/:spotId', async (req, res) => {
   let spot = await Spot.findOne({
     where: {
@@ -295,6 +314,13 @@ router.get('/:spotId', async (req, res) => {
       }
     ]
   });
+
+  if (!spot) {
+    res.statusCode = 404;
+    return res.json({
+      message: "Spot couldn't be found"
+    })
+  }
 
   let spotReviews = await Review.findAll({
     where: {
@@ -469,6 +495,25 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 router.post('/', requireAuth, async (req, res) => {
   const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
+  let errors = {};
+  if (!address) errors.address = "Street address is required"
+  if (!city) errors.city = "City is required"
+  if (!state) errors.state = "State is required"
+  if (!country) errors.country = "Country is required"
+  if (!lat || parseFloat(lat) < -90 || parseFloat(lat) > 90) errors.lat = "Latitude must be within -90 and 90"
+  if (!lng || parseFloat(lng) < -180 || parseFloat(lng) > 180) errors.lng = "Longitude must be within -180 and 180"
+  if (!name || name.length > 49) errors.name = "Name must be less than 50 characters"
+  if (!description) errors.description = "Description is required"
+  if (!price || parseFloat(price) <= 0) errors.price = "Price per day must be a positive number"
+
+  if (Object.keys(errors).length > 0) {
+    res.statusCode = 400;
+    return res.json({
+      message: "Bad Request",
+      errors
+    })
+  }
+
   const newSpot = await Spot.create({
     ownerId: req.user.id,
     address,
@@ -486,6 +531,7 @@ router.post('/', requireAuth, async (req, res) => {
   res.json(newSpot)
 })
 
+//get all spots with filters
 router.get('/', async (req, res) => {
   let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
 
@@ -509,25 +555,25 @@ router.get('/', async (req, res) => {
     filterErrors.size = "Size must be greater than or equal to 1"
   }
 
-  if (!isNaN(minLat)) {
+  if (!isNaN(minLat) && minLat >= -90 && minLat <= 90) {
     filters.lat = { [Op.gte]: minLat }
   } else if (minLat) {
     filterErrors.minLat = "Minimum latitude is invalid"
   }
 
-  if (!isNaN(maxLat)) {
+  if (!isNaN(maxLat) && maxLat >= -90 && maxLat <= 90) {
     filters.lat = { ...filters.lat, [Op.lte]: maxLat };
   } else if (maxLat) {
     filterErrors.maxLat = "Maximum latitude is invalid"
   }
 
-  if (!isNaN(minLng)) {
+  if (!isNaN(minLng) && minLng >= -180 && minLng <= 180) {
     filters.lng = { [Op.gte]: minLng };
   } else if (minLng) {
-    filterErrors.minLng = "Minimum latitude is invalid"
+    filterErrors.minLng = "Minimum longitude is invalid"
   }
 
-  if (!isNaN(maxLng)) {
+  if (!isNaN(maxLng) && maxLng >= -180 && maxLng <= 180) {
     filters.lng = { ...filters.lng, [Op.lte]: maxLng };
   } else if (maxLng) {
     filterErrors.maxLng = "Maximum longitude is invalid"
@@ -640,7 +686,7 @@ router.get('/', async (req, res) => {
     createdAt: spot.createdAt,
     updatedAt: spot.updatedAt,
     avgRating: avgRatingBySpotId[spot.id] || 0,
-    previewImage: spot.SpotImages.length ? spot.SpotImages[0].url : ''
+    previewImage: spot.SpotImages.length ? spot.SpotImages[0].url : 'No preview image'
   }))
 
   res.json({

@@ -22,7 +22,7 @@ const validateLogin = [
 
 const router = express.Router();
 
-
+//add image to review
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
   let userId = req.user.id;
   let reviewId = req.params.reviewId;
@@ -40,6 +40,19 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     res.statusCode = 403;
     return res.json({
       message: "Forbidden"
+    })
+  }
+
+  let existingReviewImages = await ReviewImage.findAll({
+    where: {
+      reviewId: reviewId
+    }
+  })
+
+  if (existingReviewImages.length >= 10) {
+    res.statusCode = 403;
+    return res.json({
+      message: "Maximum number of images for this resource was reached"
     })
   }
 
@@ -73,7 +86,7 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
   if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5 || stars !== Math.floor(stars)) errors.stars = "Stars must be an integer from 1 to 5";
   if (Object.keys(errors).length > 0) {
     res.statusCode = 400;
-    res.json({
+    return res.json({
       message: "Bad Request",
       errors
     })
