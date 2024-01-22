@@ -5,3 +5,16 @@
 .hidden {
   display: none;
 }
+
+.LogoImageDiv {
+  width: 15%;
+}
+
+.Logo {
+  width: 100%;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+}

@@ -3,7 +3,7 @@ import { createSelector } from "reselect";
 
 
 //action types
-const LOAD_SPOTS = 'spot/GET_SPOTS'
+const LOAD_SPOTS = 'spot/LOAD_SPOTS'
 
 
 //action creators
@@ -18,9 +18,9 @@ export const thunkFetchSpots = () => async (dispatch) => {
   const data = await res.json();
   const spots = data.Spots;
   dispatch(loadSpots(spots))
-  console.log('fetched spots: ', spots)
   return spots
 }
+
 
 //selectors
 
@@ -38,7 +38,6 @@ function spotReducer(state = initialState, action) {
     case LOAD_SPOTS: {
       const spotsState = { ...state };
       action.spots.forEach((spot) => {
-        console.log(`spot ${spot.id}: `, spot)
         spotsState[spot.id] = spot
       })
       return spotsState

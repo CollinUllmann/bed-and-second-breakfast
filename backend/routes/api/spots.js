@@ -657,7 +657,7 @@ router.get('/', async (req, res) => {
 
     let avgRating = totalStars / totalReviews;
 
-    avgRatingBySpotId[spotId] = Math.floor(avgRating);
+    avgRatingBySpotId[spotId] = avgRating.toFixed(1);
   }
 
 

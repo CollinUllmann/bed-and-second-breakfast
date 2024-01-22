@@ -3,15 +3,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 // import { Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import './LandingPage.css';
+import './SpotsIndex.css';
+import SpotsIndexItem from '../SpotsIndexItem/SpotsIndexItem';
 import { selectSpotsArray, thunkFetchSpots } from '../../store/spot';
-import { Link } from 'react-router-dom';
 
-function LandingPage() {
+function SpotsIndex() {
   const dispatch = useDispatch();
 
   const spots = useSelector(selectSpotsArray)
-  console.log('spots: ', spots )
 
   useEffect(() => {
     dispatch(thunkFetchSpots())
@@ -19,21 +18,19 @@ function LandingPage() {
 
   return (
     <>
-      <h1>Welcome to the Landing Page</h1>
-      <ul>
+      <div className='SpotsIndexItemContainer'>
+
         {
           spots?.map(spot => {
             return (
-              <li key={spot.id}><Link to={`/api/spots/${spot.id}`}>{spot.name}</Link></li>
+              <div className='SpotsIndexItem' key={spot.id}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
             )
             }
           )
         }
-
-      </ul>
-      
+      </div>
     </>
   );
 }
 
-export default LandingPage;
+export default SpotsIndex;
