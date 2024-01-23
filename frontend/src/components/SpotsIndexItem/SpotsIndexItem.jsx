@@ -26,7 +26,7 @@ function SpotsIndexItem({ spot }) {
       </div>
       <span className='LocationRatingSpan'>
         <h3 className="SpotCityState">{spot.city}, {spot.state}</h3>
-        <h3><FaStar /> {spot.avgRating}</h3>
+        <h3><FaStar /> {isNaN(spot.avgRating) ? 'New!' : spot.avgRating}</h3>
       </span>
       <h4 className="SpotPrice">${spot.price}/night</h4>
       <Link to={`/spots/${spot.id}`}>Details</Link>

@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { thunkFetchCreateSpot } from "../../store/spot";
+import { thunkFetchCreateSpotImage } from "../../store/spotImages";
 
 function CreateNewSpotFormPage() {
   const dispatch = useDispatch();
@@ -15,11 +16,22 @@ function CreateNewSpotFormPage() {
   const [title, setTitle] = useState('')
   const [price, setPrice] = useState('')
   const [previewImage, setPreviewImage] = useState('')
-  const [images, setImages] = useState([])
+  const [image1, setImage1] = useState('')
+  const [image2, setImage2] = useState('')
+  const [image3, setImage3] = useState('')
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [validationErrors, setValidationErrors] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newSpot = {
+
+    setHasSubmitted(true)
+    if (Object.keys(validationErrors).length > 0) {
+      console.log(hasSubmitted)
+      console.log(validationErrors)
+      return null
+    }
+    let newSpot = {
       address,
       city,
       state,
@@ -30,20 +42,59 @@ function CreateNewSpotFormPage() {
       name: title,
       price
     }
-    console.log('spot being sent into thunkFetchCreateSpot: ', newSpot)
-    dispatch(thunkFetchCreateSpot(newSpot))
 
-    // setAddress('')
-    // setCountry('')
-    // setCity('')
-    // setState('')
-    // setLat('')
-    // setLng('')
-    // setDescription('')
-    // setTitle('')
-    // setPrice('')
-    // setPreviewImage('')
-    // setImages([])
+    let images = [image1, image2, image3]
+
+    
+    console.log('spot being sent into thunkFetchCreateSpot: ', newSpot)
+    newSpot = dispatch(thunkFetchCreateSpot(newSpot));
+    console.log('previewImage being sent to thunk...')
+    dispatch(thunkFetchCreateSpotImage(newSpot.id, previewImage, true)) //the true indicates that it's a preview image which should be in the body of the post request
+    images.forEach(imageUrl => {
+      console.log('regular spot image being sent to thunk...')
+      dispatch(thunkFetchCreateSpotImage(newSpot.id, imageUrl, false))
+    })
+    
+
+    setAddress('')
+    setCountry('')
+    setCity('')
+    setState('')
+    setLat('')
+    setLng('')
+    setDescription('')
+    setTitle('')
+    setPrice('')
+    setPreviewImage('')
+    setHasSubmitted(false)
+  }
+
+  useEffect(() => {
+    let errors = {}
+    if (!country.length > 0) errors.country = 'Country is required'
+    if (!address.length > 0) errors.address = 'Address is required'
+    if (!city.length > 0) errors.city = 'City is required'
+    if (!state.length > 0) errors.state = 'State is required'
+    if (!lat.length > 0) errors.lat = 'Lat is required'
+    if (!lng.length > 0) errors.lng = 'Lng is required'
+    if (!description.length > 0 || description.length < 30) errors.description = 'Description needs a minimum of 30 characters'
+    if (!title.length > 0) errors.title = 'Name is required'
+    if (!price.length > 0) errors.price = 'Price is required'
+    if (!previewImage.length > 0) errors.previewImage = 'Preview image is required'
+    if (!imageFileTypeValidation(previewImage)) errors.previewImage = 'Image URL needs to end in png or jpg (or jpeg)'
+    if (!imageFileTypeValidation(image1)) errors.image1 = 'Image URL needs to end in png or jpg (or jpeg)'
+    if (!imageFileTypeValidation(image2)) errors.image2 = 'Image URL needs to end in png or jpg (or jpeg)'
+    if (!imageFileTypeValidation(image3)) errors.image3 = 'Image URL needs to end in png or jpg (or jpeg)'
+
+    setValidationErrors(errors)
+  }, [country, address, city, state, lat, lng, description, title, price, previewImage, image1, image2, image3])
+
+  function imageFileTypeValidation(imageUrl) {
+    if (imageUrl.length < 1) return true
+    if (imageUrl.endsWith('jpg')) return true;
+    if (imageUrl.endsWith('jpeg')) return true;
+    if (imageUrl.endsWith('png')) return true;
+    return false
   }
 
 
@@ -64,6 +115,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>
+      {hasSubmitted && validationErrors.country && 
+        <div>{validationErrors.country}</div>
+      }
       <label>
         Street Address
         <input
@@ -75,6 +129,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>
+      {hasSubmitted && validationErrors.address && 
+        <div>{validationErrors.address}</div>
+      }
       <label>
         City
         <input
@@ -86,6 +143,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>
+      {hasSubmitted && validationErrors.city && 
+        <div>{validationErrors.city}</div>
+      }
       <label>
         State
         <input
@@ -97,6 +157,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>
+      {hasSubmitted && validationErrors.state && 
+        <div>{validationErrors.state}</div>
+      }
       <label>
         Latitude
         <input
@@ -108,6 +171,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>
+      {hasSubmitted && validationErrors.lat && 
+        <div>{validationErrors.lat}</div>
+      }
       <label>
         Longitude
         <input
@@ -119,6 +185,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>
+      {hasSubmitted && validationErrors.lng && 
+        <div>{validationErrors.lng}</div>
+      }
       <h2>Describe your place to guests</h2>
       <p>Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>       
         <textarea
@@ -128,6 +197,9 @@ function CreateNewSpotFormPage() {
           name='description'
           required
         />
+        {hasSubmitted && validationErrors.description && 
+        <div>{validationErrors.description}</div>
+        }
       <h2>Create a title for your spot</h2>
       <p>Catch guests attention with a spot title that highlights what makes your place special.</p>       
         <input
@@ -138,6 +210,9 @@ function CreateNewSpotFormPage() {
           required
           name='title'
         />
+        {hasSubmitted && validationErrors.title && 
+        <div>{validationErrors.title}</div>
+      }
       <h2>Set a base price for your spot</h2>
       <p>Competitive pricing can help your listing stand out and rank higher in search results</p>
       <label>
@@ -151,6 +226,9 @@ function CreateNewSpotFormPage() {
           required
         />
       </label>   
+      {hasSubmitted && validationErrors.price && 
+        <div>{validationErrors.price}</div>
+      }
       <h2>Liven up your spot with photos</h2>
       <p>Submit a link to at least one photo to publish your spot</p>       
         <input
@@ -161,31 +239,42 @@ function CreateNewSpotFormPage() {
           name='previewImage'
           required
         />  
+        {hasSubmitted && validationErrors.previewImage && 
+        <div>{validationErrors.previewImage}</div>
+        }
         <input
           type='text'
-          value={images}
+          value={image1}
           placeholder="Image URL"
-          onChange={(e) => setImages(e.target.value)}
+          onChange={(e) => setImage1(e.target.value)}
           name='image1'
-
         />  
+        {hasSubmitted && validationErrors.image1 && 
+        <div>{validationErrors.image1}</div>
+        }
         <input
           type='text'
-          value={images}
+          value={image2}
           placeholder="Image URL"
-          onChange={(e) => setImages(e.target.value)}
+          onChange={(e) => setImage2(e.target.value)}
           name='image2'
 
-        />  
+        /> 
+        {hasSubmitted && validationErrors.image2 && 
+        <div>{validationErrors.image2}</div>
+        } 
         <input
           type='text'
-          value={images}
+          value={image3}
           placeholder="Image URL"
-          onChange={(e) => setImages(e.target.value)}
+          onChange={(e) => setImage3(e.target.value)}
           name='image3'
 
         />  
-      <button type='submit'>Submit</button>
+        {hasSubmitted && validationErrors.image3 && 
+        <div>{validationErrors.image3}</div>
+        }
+      <button   type='submit'>Submit</button>
       </form>
       
     

@@ -58,8 +58,9 @@ export const thunkFetchCreateSpot = (spot) => async (dispatch) => {
     console.log('response received')
     const newSpot = await res.json()
     dispatch(addSpot(newSpot))
+    return newSpot
   }
-  console.log('creation failed')
+  return null
 }
 
 
