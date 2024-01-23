@@ -24,11 +24,12 @@ function LoginFormModal() {
       });
   };
 
+
   return (
     <>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className='LoginForm' onSubmit={handleSubmit}>
+        <label className='FormInput'>
           Username or Email
           <input
             type="text"

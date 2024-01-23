@@ -52,8 +52,8 @@ function SignupFormModal() {
   return (
     <>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className='SignupForm' onSubmit={handleSubmit}>
+        <label className='FormInput'>
           Email
           <input
             type="text"
@@ -63,7 +63,7 @@ function SignupFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
+        <label className='FormInput'>
           Username
           <input
             type="text"
@@ -73,7 +73,7 @@ function SignupFormModal() {
           />
         </label>
         {hasSubmitted && errors.username && <p>{errors.username}</p>}
-        <label>
+        <label className='FormInput'>
           First Name
           <input
             type="text"
@@ -83,7 +83,7 @@ function SignupFormModal() {
           />
         </label>
         {errors.firstName && <p>{errors.firstName}</p>}
-        <label>
+        <label className='FormInput'>
           Last Name
           <input
             type="text"
@@ -93,7 +93,7 @@ function SignupFormModal() {
           />
         </label>
         {errors.lastName && <p>{errors.lastName}</p>}
-        <label>
+        <label className='FormInput'>
           Password
           <input
             type="password"
@@ -103,7 +103,7 @@ function SignupFormModal() {
           />
         </label>
         {hasSubmitted && errors.password && <p>{errors.password}</p>}
-        <label>
+        <label className='FormInput'>
           Confirm Password
           <input
             type="password"

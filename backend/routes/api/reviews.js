@@ -128,7 +128,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
     })
   }
 
-  console.log(existingReview.userId)
+  // console.log(existingReview.userId)
   if (existingReview.userId !== userId) {
     res.statusCode = 403;
     return res.json({

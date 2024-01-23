@@ -11,6 +11,7 @@ function SpotsIndex() {
   const dispatch = useDispatch();
 
   const spots = useSelector(selectSpotsArray)
+  console.log('spots in store: ', spots)
 
   useEffect(() => {
     dispatch(thunkFetchSpots())

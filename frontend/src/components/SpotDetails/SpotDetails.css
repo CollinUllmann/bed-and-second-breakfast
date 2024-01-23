@@ -1,0 +1,8 @@
+.SpotDetailsImageContainer {
+  display: flex;
+}
+
+.SpotDetailsPreviewImage {
+  width: 50%;
+}
+

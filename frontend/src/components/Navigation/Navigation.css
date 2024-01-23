@@ -17,4 +17,13 @@
 .Header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.ProfileButton {
+  width: 5%
+}
+
+.profile-dropdown {
+  background-color: blue;
 }

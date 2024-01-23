@@ -1,0 +1,8 @@
+.SignupForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.FormInput {
+  margin: 5% 0;
+}
