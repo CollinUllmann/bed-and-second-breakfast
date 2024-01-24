@@ -17,6 +17,8 @@ function SpotDetails() {
   const spot = getSpotById(spotId);
   const owner = getUserById(spot?.ownerId);
   const spotImages = getImagesBySpotId(spotId)
+  const previewSpotImage = spotImages.find(spotImage => spotImage.preview);
+  const gallerySpotImages = spotImages.filter(spotImage => !spotImage.preview);
 
   useEffect(() => {
     dispatch(thunkFetchSpot(spotId))
@@ -29,9 +31,9 @@ function SpotDetails() {
       <h2>{spot?.name}</h2>
       <h3>{spot?.city}, {spot?.state}, {spot?.country}</h3>
       <div className="SpotDetailsImageContainer">
-        <img className='SpotDetailsPreviewImage' src={spot?.previewImage} />
+        <img className='SpotDetailsPreviewImage' src={previewSpotImage?.url} />
         <div className='SpotDetailsImageGallery'>
-          {spotImages.map(spotImage => {
+          {gallerySpotImages.map(spotImage => {
             return (
               <img key={spotImage.id} src={spotImage.url} alt="" />
             )

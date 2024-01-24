@@ -45,14 +45,11 @@ function CreateNewSpotFormPage() {
 
     let images = [image1, image2, image3]
 
-    
-    console.log('spot being sent into thunkFetchCreateSpot: ', newSpot)
-    newSpot = dispatch(thunkFetchCreateSpot(newSpot));
-    console.log('previewImage being sent to thunk...')
-    dispatch(thunkFetchCreateSpotImage(newSpot.id, previewImage, true)) //the true indicates that it's a preview image which should be in the body of the post request
-    images.forEach(imageUrl => {
-      console.log('regular spot image being sent to thunk...')
-      dispatch(thunkFetchCreateSpotImage(newSpot.id, imageUrl, false))
+    dispatch(thunkFetchCreateSpot(newSpot)).then(responseSpot => {
+      dispatch(thunkFetchCreateSpotImage(responseSpot.id, previewImage, true)) //the true indicates that it's a preview image which should be in the body of the post request
+      images.forEach(imageUrl => {
+        dispatch(thunkFetchCreateSpotImage(responseSpot.id, imageUrl, false))
+      })
     })
     
 

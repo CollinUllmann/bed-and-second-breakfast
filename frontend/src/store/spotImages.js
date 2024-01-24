@@ -21,14 +21,13 @@ export const addSpotImage = (spotImage) => ({
 
 //thunks
 export const thunkFetchCreateSpotImage = (spotId, url, preview) => async (dispatch) => {
-  const res = await csrfFetch('/api/spots/:spotId/images', {
+  const res = await csrfFetch(`/api/spots/${spotId}/images`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: {
-      spotId,
+    body: JSON.stringify({
       url,
       preview
-    }
+    })
   });
   if (res.ok) {
     console.log('response successfully received')
