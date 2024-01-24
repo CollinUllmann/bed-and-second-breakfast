@@ -30,7 +30,7 @@ module.exports = {
         lat: -37.9136,
         lng: 175.4786,
         name: 'Bag End',
-        description: 'Charming hobbit hole with a round door. No visitors except on party business',
+        description: 'Charming hobbit hole with a round door. No visitors except on party business. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 80
       },
       {
@@ -42,7 +42,7 @@ module.exports = {
         lat: 39.2041,
         lng: -106.8370,
         name: 'Rivendell',
-        description: 'Serene elven refuge nestled amidst beautiful waterfalls. The ideal get away.',
+        description: 'Serene elven refuge nestled amidst beautiful waterfalls. The ideal get away. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 120
       },
       {
@@ -54,7 +54,7 @@ module.exports = {
         lat: 39.7036,
         lng: -105.4955,
         name: 'Weathertop',
-        description: 'Scenic ancient ruins. Great spot for a picnic at sunset!',
+        description: 'Scenic ancient ruins. Great spot for a picnic at sunset! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 90
       },
       {
@@ -66,7 +66,7 @@ module.exports = {
         lat: 56.1317,
         lng: -3.9403,
         name: 'Mines of Moria',
-        description: 'Historical dwarven kingdom turned adventurous underground escape room.',
+        description: 'Historical dwarven kingdom turned adventurous underground escape room. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 100
       },
       {
@@ -78,7 +78,7 @@ module.exports = {
         lat: 47.6062,
         lng: -122.3321,
         name: 'Lothlorien',
-        description: 'Enchanting treetop city, home to graceful elves. Experience treehouse living!',
+        description: 'Enchanting treetop city, home to graceful elves. Experience treehouse living! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 150
       },
       {
@@ -90,7 +90,7 @@ module.exports = {
         lat: 51.4545,
         lng: -2.5879,
         name: 'Minas Tirith',
-        description: 'Historic seven-tiered city with breathtaking views.',
+        description: 'Historic seven-tiered city with breathtaking views. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 160
       },
       {
@@ -102,7 +102,7 @@ module.exports = {
         lat: 51.5074,
         lng: -0.1278,
         name: 'Osgiliath',
-        description: 'Once a great city, now a picturesque riverside spot.',
+        description: 'Once a great city, now a picturesque riverside spot. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 90
       },
       {
@@ -114,7 +114,7 @@ module.exports = {
         lat: 43.7711,
         lng: 11.2486,
         name: 'Orthanc',
-        description: 'Impressive black tower offering unparalleled views of Fangorn Forest.',
+        description: 'Impressive black tower offering unparalleled views of Fangorn Forest. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 120
       },
       {
@@ -126,7 +126,7 @@ module.exports = {
         lat: 40.7128,
         lng: -74.0060,
         name: 'Barad-dur',
-        description: 'Iconic dark fortress with stunning volcanic views. Ideal for world domination enthusiasts!',
+        description: 'Iconic dark fortress with stunning volcanic views. Ideal for world domination enthusiasts! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         price: 180
       },
     ], { validate: true })

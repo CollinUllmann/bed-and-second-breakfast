@@ -1,8 +1,58 @@
 .SpotDetailsImageContainer {
   display: flex;
+  flex-direction: row;
+}
+
+.SpotDetailsImageGallery {
+  display: grid;
+  width: 0;
+  flex-grow: 1;
+}
+
+.SpotImageGalleryColDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.SpotImageGalleryImage {
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+.SpotImageGalleryCell {
+  display: flex;
+}
+
+.SpotDetailsPreviewCell {
+  display: flex;
+  width: 0;
+  flex-grow: 1;
 }
 
 .SpotDetailsPreviewImage {
-  width: 50%;
+  object-fit: cover;
+  width: 100%;
 }
 
+.SpotDetailsDescriptionAndReservationContainer {
+  display: flex;
+  align-items: flex-start;
+  margin: 2% 0 0 0;
+}
+
+.SpotDetailsHostDescription {
+  margin: 0 10% 0 0;
+  width: 70%;
+}
+
+.SpotDetailsReservationContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.SpotDetailsPriceRatingSpan {
+  display: flex;
+  justify-content: space-between;
+}

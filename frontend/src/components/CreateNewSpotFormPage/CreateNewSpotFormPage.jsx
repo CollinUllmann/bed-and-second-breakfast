@@ -2,8 +2,10 @@ import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { thunkFetchCreateSpot } from "../../store/spot";
 import { thunkFetchCreateSpotImage } from "../../store/spotImages";
+import { useNavigate } from "react-router-dom";
 
 function CreateNewSpotFormPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [country, setCountry] = useState('')
@@ -21,6 +23,8 @@ function CreateNewSpotFormPage() {
   const [image3, setImage3] = useState('')
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [validationErrors, setValidationErrors] = useState({})
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,12 +48,13 @@ function CreateNewSpotFormPage() {
     }
 
     let images = [image1, image2, image3]
-
     dispatch(thunkFetchCreateSpot(newSpot)).then(responseSpot => {
-      dispatch(thunkFetchCreateSpotImage(responseSpot.id, previewImage, true)) //the true indicates that it's a preview image which should be in the body of the post request
+      const promises = [];
+      promises.push(dispatch(thunkFetchCreateSpotImage(responseSpot.id, previewImage, true))) //the true indicates that it's a preview image which should be in the body of the post request
       images.forEach(imageUrl => {
-        dispatch(thunkFetchCreateSpotImage(responseSpot.id, imageUrl, false))
+        promises.push(dispatch(thunkFetchCreateSpotImage(responseSpot.id, imageUrl, false)))
       })
+      Promise.all(promises).then(() => navigate(`/spots/${responseSpot.id}`))
     })
     
 
@@ -63,7 +68,12 @@ function CreateNewSpotFormPage() {
     setTitle('')
     setPrice('')
     setPreviewImage('')
+    setImage1('')
+    setImage2('')
+    setImage3('')
     setHasSubmitted(false)
+
+
   }
 
   useEffect(() => {
@@ -271,7 +281,7 @@ function CreateNewSpotFormPage() {
         {hasSubmitted && validationErrors.image3 && 
         <div>{validationErrors.image3}</div>
         }
-      <button   type='submit'>Submit</button>
+      <button   type='submit'>Create Spot</button>
       </form>
       
     

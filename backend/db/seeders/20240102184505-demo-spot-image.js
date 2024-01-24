@@ -23,7 +23,7 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: 'https://static.wikia.nocookie.net/lotr/images/e/e4/Vlcsnap-2013-05-19-19h49m07s0.png/revision/latest/scale-to-width-down/1000?cb=20130519155935',
+        url: 'https://i.etsystatic.com/21086983/r/il/8b179f/3645143301/il_570xN.3645143301_65sc.jpg',
         preview: true
       },
       {
@@ -32,8 +32,23 @@ module.exports = {
         preview: false
       },
       {
+        spotId: 1,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
         spotId: 2,
-        url: 'https://static.wikia.nocookie.net/lotr/images/5/53/Rivendell_-_The_Hobbit.PNG/revision/latest?cb=20201223182505',
+        url: 'https://artistmonkeys.com/wp-content/uploads/2023/09/Rivendell-beautiful-landscape-2.jpg',
         preview: true
       },
       {
@@ -42,13 +57,43 @@ module.exports = {
         preview: false
       },
       {
+        spotId: 2,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
         spotId: 3,
-        url: 'https://static.wikia.nocookie.net/lotr/images/2/2e/Weathertop%27s_view.png/revision/latest?cb=20130117111316',
+        url: 'https://pm1.aminoapps.com/6598/64df5f0c151112e7cd202668b40d7bc3f21656a9_00.jpg',
         preview: true
       },
       {
         spotId: 3,
-        url: 'https://static.wikia.nocookie.net/middle-earth-film-saga/images/b/b7/Weathertop_-_AUJ.jpg/revision/latest?cb=20210610061140',
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://tolkiengateway.net/w/images/1/1a/Jef_Murray_-_Amon_S%C3%BBl.jpg',
         preview: false
       },
       {
@@ -62,13 +107,42 @@ module.exports = {
         preview: false
       },
       {
+        spotId: 4,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      }, {
+        spotId: 4,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
         spotId: 5,
         url: 'https://i.etsystatic.com/20317338/r/il/b44279/3443441253/il_570xN.3443441253_9e73.jpg',
         preview: true
       },
       {
         spotId: 5,
-        url: 'https://static.wikia.nocookie.net/middle-earth-film-saga/images/4/4b/Lothlorien.jpg/revision/latest?cb=20210702185849',
+        url: 'https://pm1.aminoapps.com/6319/ae051076b6e3469e98152f9bf2d832af83e77696_00.jpg',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
         preview: false
       },
       {
@@ -78,17 +152,47 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: 'https://static.wikia.nocookie.net/lotr/images/0/0b/Seventh_level_of_Minas_Tirith.png/revision/latest?cb=20181024013412',
+        url: 'https://i.pinimg.com/474x/63/d2/da/63d2da67a9dfd3f89b8150260ec1f280.jpg',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
         preview: false
       },
       {
         spotId: 7,
-        url: 'https://static.wikia.nocookie.net/lotr/images/9/9a/BC1D3C88-4C27-4EEA-9973-FB4BEAF88D48.jpeg/revision/latest?cb=20200519171256',
+        url: 'https://i.pinimg.com/originals/cf/ae/68/cfae6834c20cee3cc5c24d3153325b81.png',
         preview: true
       },
       {
         spotId: 7,
-        url: 'https://i.pinimg.com/originals/cf/ae/68/cfae6834c20cee3cc5c24d3153325b81.png',
+        url: 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/07/boromir_in_osgiliath-cropped.jpg',
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
         preview: false
       },
       {
@@ -102,15 +206,45 @@ module.exports = {
         preview: false
       },
       {
+        spotId: 8,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 8,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 8,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
         spotId: 9,
         url: 'https://preview.redd.it/how-did-sauron-construct-barad-d%C3%BBr-what-was-the-timescale-v0-68nnm70z5yyb1.jpg?auto=webp&s=b692db0c9c424e7abec6c06d5e44cbc88ba7285d',
         preview: true
       },
       {
         spotId: 9,
-        url: 'https://static.wikia.nocookie.net/lotr/images/b/b8/Rebuilding_of_Barad-dur.jpg/revision/latest?cb=20130127060850',
+        url: 'https://i.pinimg.com/originals/22/12/2b/22122b723279cb255df3d25103ded54e.jpg',
         preview: false
       },
+      {
+        spotId: 9,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        preview: false
+      }
 
     ], { validate: true })
   },

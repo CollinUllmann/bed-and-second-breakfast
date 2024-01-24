@@ -4,8 +4,8 @@
 // // import { Navigate } from 'react-router-dom';
 // import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './SpotsIndexItem.css';
 import { FaStar } from "react-icons/fa6";
+import './SpotsIndexItem.css';
 // import { useEffect } from 'react';
 // import { selectSpotsArray, thunkFetchSpots } from '../../store/spot';
 // import { Link } from 'react-router-dom';
