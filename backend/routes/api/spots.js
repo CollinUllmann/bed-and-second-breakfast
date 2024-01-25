@@ -271,6 +271,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   let errors = {};
   if (!review) errors.review = 'Review text is required';
   if (!stars || typeof (stars) !== 'number' || stars < 1 || stars > 5 || stars !== Math.floor(stars)) errors.stars = 'Stars must be an integer from 1 to 5'
+  if (review.length < 10) errors.review = 'Review must be at least 10 characters';
   if (Object.keys(errors).length > 0) {
     res.statusCode = 400;
     return res.json({

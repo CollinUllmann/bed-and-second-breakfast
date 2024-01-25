@@ -1,0 +1,23 @@
+.SignupForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.FormInput {
+  margin: 5% 0;
+}
+
+.rating-input {
+  display: flex;
+  margin-right: 4px;
+  align-items: center;
+}
+
+.rating-input .filled {
+  color: blue;
+}
+
+.rating-input .empty {
+  color: lightblue;
+}
+

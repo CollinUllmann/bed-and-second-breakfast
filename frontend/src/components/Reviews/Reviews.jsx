@@ -4,19 +4,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUserById } from "../../store/users";
 import { useEffect } from "react";
 import './Reviews.css'
+import ReviewFormModal from "../ReviewFormModal/ReviewFormModal";
+import OpenModalButton from '../OpenModalButton';
+import DeleteConfirmationModal from "../DeleteConfirmationModal";
+
 
 
 function Reviews({spot}) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const getReviewsBySpotId = useSelector(selectReviewsBySpotId)
   const getUserById = useSelector(selectUserById)
 
-  const reviews = getReviewsBySpotId(spot.id)
+  let reviews = getReviewsBySpotId(spot.id)
+  reviews = reviews.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt)
+  })
 
   useEffect(() => {
     dispatch(thunkFetchReviewsBySpotId(spot.id))
   }, [dispatch, spot.id])
 
+ 
+
+  const includesCurrentUserReview = reviews.find(review => {
+    return review.userId == sessionUser?.id ? true : false
+  })
+
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   return (
     <>
@@ -26,14 +41,29 @@ function Reviews({spot}) {
           <h2> ·{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h2>
         )}
       </span>
-      <button>Post Your Review</button>
+      {sessionUser && !(sessionUser?.id == spot.ownerId) && !includesCurrentUserReview && 
+        <OpenModalButton
+              buttonText="Leave your review here..."
+              modalComponent={<ReviewFormModal spot={spot}/>}
+            />
+      }
       {reviews.map(review => {
         const user = getUserById(review.userId)
+        let date = Date.parse(review.createdAt)
+        date = new Date(date)
+        let month = months[date.getMonth()]
+        let year = date.getFullYear()
         return (
           <div key={review.id}>
             <h2>{user?.firstName}</h2>
-            <h4>Month 20##</h4>
+            <h3>{month} {year}</h3>
             <p>{review.review}</p>
+            {sessionUser.id == review.userId && 
+            <OpenModalButton
+            buttonText="Delete"
+            modalComponent={<DeleteConfirmationModal reviewId={review.id}/>}
+          />
+            }
           </div>
         )
       })}
