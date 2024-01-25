@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectSpotById, thunkFetchSpot } from "../../store/spot";
+import { selectSpotById, thunkFetchSpotById } from "../../store/spot";
 import { useEffect } from "react";
 import { selectUserById, thunkFetchUsers } from "../../store/users";
 import { selectSpotImagesBySpotId } from "../../store/spotImages";
@@ -18,6 +18,7 @@ function SpotDetails() {
   const getUserById = useSelector(selectUserById)
   const getImagesBySpotId = useSelector(selectSpotImagesBySpotId)
 
+
   const spot = getSpotById(spotId);
   const owner = getUserById(spot?.ownerId);
   const spotImages = getImagesBySpotId(spotId)
@@ -25,7 +26,7 @@ function SpotDetails() {
   const gallerySpotImages = spotImages.filter(spotImage => !spotImage.preview);
 
   useEffect(() => {
-    dispatch(thunkFetchSpot(spotId))
+    dispatch(thunkFetchSpotById(spotId))
     dispatch(thunkFetchUsers())
   }, [spotId, dispatch])
 
@@ -60,7 +61,7 @@ function SpotDetails() {
         <div className='SpotDetailsImageGallery'>
           {gallerySpotImages.map((spotImage, index) => {
             return (
-              <div key={spotImage.id} className="SpotImageGalleryCell" style={{'grid-area': `${imagePositionMapping[index][0]} / ${imagePositionMapping[index][1]} / ${imagePositionMapping[index][0]} / ${imagePositionMapping[index][1]}`}}>
+              <div key={spotImage.id} className="SpotImageGalleryCell" style={{'gridArea': `${imagePositionMapping[index][0]} / ${imagePositionMapping[index][1]} / ${imagePositionMapping[index][0]} / ${imagePositionMapping[index][1]}`}}>
                 <img  src={spotImage.url} className="SpotImageGalleryImage"/>
               </div>
             )

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
-import { thunkFetchCreateReview } from '../../store/reviews';
+import { thunkFetchCreateReview, thunkFetchReviewsBySpotId } from '../../store/reviews';
 import { FaStar } from "react-icons/fa6";
 import './ReviewFormModal.css'
+import { thunkFetchSpotById } from '../../store/spot';
 
 // import * as sessionActions from '../../store/session';
 // import './SignupForm.css';
@@ -19,9 +20,6 @@ function ReviewFormModal({spot}) {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const { closeModal } = useModal();
 
-  useEffect(() => {
-    review.length < 10 ? setErrors({...errors, review: 'Review must be at least 10 characters'}) : delete errors.review
-  }, [review, errors])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +39,8 @@ function ReviewFormModal({spot}) {
         if (errors) {
           setErrors(errors);
         } else {
+          dispatch(thunkFetchReviewsBySpotId(spot.id))
+          dispatch(thunkFetchSpotById(spot.id))
           closeModal()
         }
       });

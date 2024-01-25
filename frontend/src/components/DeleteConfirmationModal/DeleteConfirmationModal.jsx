@@ -2,17 +2,26 @@
 import { useDispatch } from 'react-redux';
 import { thunkFetchDeleteReview } from '../../store/reviews';
 import { useModal } from '../../context/Modal';
+import { thunkFetchSpotById } from '../../store/spot';
 
 // import * as sessionActions from '../../store/session';
 // import './SignupForm.css';
 
-function DeleteConfirmationModal({reviewId}) {
+function DeleteConfirmationModal({reviewId, spotId}) {
   const dispatch = useDispatch()
   const {closeModal} = useModal();
 
+  if (!reviewId || !spotId) {
+    return <></>
+  }
+
   const handleDelete = (reviewId) => {
-    dispatch(thunkFetchDeleteReview(reviewId))
-    closeModal()
+    const x = dispatch(thunkFetchDeleteReview(reviewId))
+    x.then(() => {
+        dispatch(thunkFetchSpotById(spotId))
+        closeModal()
+      }
+    )
   }
 
   return (

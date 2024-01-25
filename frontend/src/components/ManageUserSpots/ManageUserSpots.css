@@ -1,0 +1,30 @@
+.UserSpotsIndexItemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0px 20px;
+}
+
+.UserSpotsIndexItem {
+  aspect-ratio: 1.25;
+  width: 25%;
+  margin: 20px;
+  border: 3px solid black;
+  min-width: 200px;
+  
+}
+.ImageDiv {
+  height: 75%;
+  overflow: hidden;
+}
+
+.PreviewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.LocationRatingSpan {
+  display: flex;
+  justify-content: space-between;
+}

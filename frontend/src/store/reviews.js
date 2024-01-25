@@ -49,12 +49,11 @@ export const thunkFetchCreateReview = (spotId, review) => (dispatch) => {
 }
 
 export const thunkFetchDeleteReview = (reviewId) => (dispatch) => {
-  csrfFetch(`/api/reviews/${reviewId}`, {
+  return csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE'
   }).then(() => {
     dispatch(deleteReview(reviewId))
   })
-  return
 }
 
 

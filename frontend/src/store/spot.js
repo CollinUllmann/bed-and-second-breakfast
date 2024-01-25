@@ -29,7 +29,7 @@ export const thunkFetchSpots = () => async (dispatch) => {
   return spots
 }
 
-export const thunkFetchSpot = (spotId) => async (dispatch) => {
+export const thunkFetchSpotById = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`)
   const data = await res.json();
   const { Owner, SpotImages, ...spot } = data;
