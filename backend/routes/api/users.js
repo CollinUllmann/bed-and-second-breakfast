@@ -12,6 +12,16 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+//get all users
+//TODO tun into taking in userIds and returning corresponding user objects
+router.get('/', async (req, res) => {
+
+  const users = await User.findAll();
+
+  res.json(users);
+
+});
+
 //sign up a user
 router.post('/', async (req, res) => {
   const { email, password, username, firstName, lastName } = req.body;

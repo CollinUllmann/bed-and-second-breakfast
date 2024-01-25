@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { selectSpotById, thunkFetchSpot } from "../../store/spot";
 import { useEffect } from "react";
-import { selectUserById } from "../../store/users";
+import { selectUserById, thunkFetchUsers } from "../../store/users";
 import { selectSpotImagesBySpotId } from "../../store/spotImages";
 import './SpotDetails.css'
 import { FaStar } from "react-icons/fa6";
@@ -26,11 +26,9 @@ function SpotDetails() {
 
   useEffect(() => {
     dispatch(thunkFetchSpot(spotId))
+    dispatch(thunkFetchUsers())
   }, [spotId, dispatch])
 
-  // const cols = 2;
-
-  // const columnDivs = [];
 
   const gallerySpotImageElements = gallerySpotImages.map(spotImage => {
     return (
@@ -64,11 +62,9 @@ function SpotDetails() {
     const rowPosition = (i % rows) + 1
     imagePositionMapping[i] = [rowPosition, colPosition]
   }
-  console.log(imagePositionMapping)
   
 
 
-  console.log(gallerySpotImages)
 
   return (
     <>
@@ -97,12 +93,17 @@ function SpotDetails() {
         <div className="SpotDetailsReservationContainer">
           <span className="SpotDetailsPriceRatingSpan">
             <h2>${spot?.price}night</h2>
-            <h3><FaStar /> {isNaN(spot?.avgStarRating) ? 'New!' : spot.avgStarRating.toFixed(1)}</h3>
+              <span className="ReviewAvgAndCount">
+                <h3><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)}</h3>
+                {spot?.numReviews && (
+                  <h3>{' ·'}{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h3>
+                )}
+              </span>
           </span>
           <button onClick={()=>alert('Feature Coming Soon!')}>Reserve</button>
         </div>
       </div>
-      <Reviews spot={spot}/>
+      {spot ? <Reviews spot={spot}/> : <></>}
     </>
   );
 }

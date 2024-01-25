@@ -1,5 +1,6 @@
 // import { csrfFetch } from "./csrf";
 import { createSelector } from "reselect";
+import { csrfFetch } from "./csrf";
 
 
 //action types
@@ -13,7 +14,15 @@ export const loadUsers = (users) => ({
 })
 
 //thunks
-
+export const thunkFetchUsers = () => async (dispatch) => {
+  const res = await csrfFetch('/api/users')
+  if (res.ok) {
+    const users = await res.json()
+    dispatch(loadUsers(users))
+    return null
+  }
+  return null
+}
 
 //selectors
 

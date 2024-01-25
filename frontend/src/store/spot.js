@@ -32,11 +32,9 @@ export const thunkFetchSpots = () => async (dispatch) => {
 export const thunkFetchSpot = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`)
   const data = await res.json();
-  // console.log(data)
   const { Owner, SpotImages, ...spot } = data;
   dispatch(loadUsers([Owner]))
   dispatch(loadSpots([spot]))
-  // console.log(SpotImages)
   dispatch(loadSpotImages(SpotImages.map(spotImage => {
     return {
       id: spotImage.id,
@@ -55,7 +53,6 @@ export const thunkFetchCreateSpot = (spot) => async (dispatch) => {
   })
 
   if (res.ok) {
-    console.log('response received')
     const newSpot = await res.json()
     dispatch(addSpot(newSpot))
     return newSpot
@@ -89,7 +86,6 @@ function spotReducer(state = initialState, action) {
       return spotsState
     }
     case ADD_SPOT: {
-      console.log(state)
       return { ...state, entries: { ...state.entries, [action.spot.id]: action.spot } }
     }
     default:

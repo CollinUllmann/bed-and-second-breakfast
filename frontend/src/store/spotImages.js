@@ -5,7 +5,6 @@ import { csrfFetch } from "./csrf";
 
 //action types
 const LOAD_SPOT_IMAGES = 'spot/LOAD_SPOT_IMAGES'
-const ADD_SPOT_IMAGE = 'spot/ADD_SPOT_IMAGES'
 
 
 //action creators
@@ -14,10 +13,6 @@ export const loadSpotImages = (spotImages) => ({
   spotImages
 })
 
-export const addSpotImage = (spotImage) => ({
-  type: ADD_SPOT_IMAGE,
-  spotImage
-})
 
 //thunks
 export const thunkFetchCreateSpotImage = (spotId, url, preview) => async (dispatch) => {
@@ -30,9 +25,8 @@ export const thunkFetchCreateSpotImage = (spotId, url, preview) => async (dispat
     })
   });
   if (res.ok) {
-    console.log('response successfully received')
     const newSpotImage = await res.json();
-    dispatch(addSpotImage(newSpotImage))
+    dispatch(loadSpotImages([newSpotImage]))
     return null
   }
   return null
@@ -64,11 +58,6 @@ function spotImagesReducer(state = initialState, action) {
         spotImageState[spotImage.id] = spotImage
       })
       return spotImageState
-    }
-    case ADD_SPOT_IMAGE: {
-      const spotImageState = { ...state };
-      console.log(spotImageState)
-      return state
     }
     default:
       return state;

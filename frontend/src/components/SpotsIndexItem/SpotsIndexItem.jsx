@@ -17,7 +17,6 @@ function SpotsIndexItem({ spot }) {
   // useEffect(() => {
   //   dispatch(thunkFetchImages(spot.id))
   // })
-  console.log(spot)
 
   return (
     <>
