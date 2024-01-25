@@ -37,23 +37,6 @@ function SpotDetails() {
       </div>
     )
   })
-  
-  // const gallerySpotImageElementsByColIndex = gallerySpotImageElements.reduce((acc, imageElement, currentIndex) => {
-  //   const colIndex = currentIndex % cols;
-  //   if (!acc[colIndex]) {
-  //     acc[colIndex] = []
-  //   }
-  //   acc[colIndex].push(imageElement)
-  //   return acc
-  // }, {})
-
-  // for (let i = 0; i < cols; i++) {
-  //   columnDivs.push(
-  //     <div key={i} className="SpotImageGalleryColDiv">
-  //       {gallerySpotImageElementsByColIndex[i]}
-  //     </div>
-  //   )
-  // }
 
   const rows = 2
   const imagePositionMapping = {};
@@ -75,7 +58,6 @@ function SpotDetails() {
           <img className='SpotDetailsPreviewImage' src={previewSpotImage?.url} />
         </div>
         <div className='SpotDetailsImageGallery'>
-          {/* {columnDivs} */}
           {gallerySpotImages.map((spotImage, index) => {
             return (
               <div key={spotImage.id} className="SpotImageGalleryCell" style={{'grid-area': `${imagePositionMapping[index][0]} / ${imagePositionMapping[index][1]} / ${imagePositionMapping[index][0]} / ${imagePositionMapping[index][1]}`}}>
