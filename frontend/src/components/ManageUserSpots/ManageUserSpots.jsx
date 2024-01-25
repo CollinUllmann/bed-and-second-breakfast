@@ -34,11 +34,17 @@ function ManageUserSpots() {
     {userSpots.length < 1 && 
       <button onClick={() => navigate('/spots/new')}>Create New Spot</button>    
     }
-      <div className='UserSpotsIndexItemContainer'>
+      <div className='UserSpotsIndexItemContainer' >
         {
           userSpots?.map(spot => {
             return (
-              <div className='UserSpotsIndexItem' key={spot.id}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
+              <div key={spot.id} className='UserSpotsIndexItemAndButtonsContainer'>
+                <div className='UserSpotsIndexItem' onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
+                <div className='ButtonContainer'>
+                  <button>Update</button>
+                  <button>Delete</button>
+                </div>
+              </div>
             )
             }
           )

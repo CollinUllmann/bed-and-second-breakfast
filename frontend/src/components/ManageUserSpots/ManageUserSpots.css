@@ -7,12 +7,16 @@
 
 .UserSpotsIndexItem {
   aspect-ratio: 1.25;
-  width: 25%;
   margin: 20px;
   border: 3px solid black;
   min-width: 200px;
-  
+  height: 300px;
 }
+
+.UserSpotsIndexItem:hover {
+  cursor: pointer;
+}
+
 .ImageDiv {
   height: 75%;
   overflow: hidden;
@@ -27,4 +31,15 @@
 .LocationRatingSpan {
   display: flex;
   justify-content: space-between;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.UserSpotsIndexItemAndButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

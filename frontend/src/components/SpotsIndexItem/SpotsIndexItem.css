@@ -4,8 +4,12 @@
   margin: 20px;
   border: 3px solid black;
   min-width: 200px;
-  
 }
+
+.SpotsIndexItem:hover {
+  cursor: pointer;
+}
+
 .ImageDiv {
   height: 75%;
   overflow: hidden;

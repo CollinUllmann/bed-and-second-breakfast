@@ -24,11 +24,10 @@ function SpotsIndexItem({ spot }) {
         <img className='PreviewImage' src={spot.previewImage} />
       </div>
       <span className='LocationRatingSpan'>
-        <h3 className="SpotCityState">{spot.city}, {spot.state}</h3>
-        <h3><FaStar /> {isNaN(spot.avgRating) ? 'New!' : spot.avgRating}</h3>
+        <div className="SpotCityState">{spot.city}, {spot.state}</div>
+        <div><FaStar /> {isNaN(spot.avgRating) ? 'New!' : spot.avgRating}</div>
       </span>
-      <h4 className="SpotPrice">${spot.price}/night</h4>
-      <Link to={`/spots/${spot.id}`}>Details</Link>
+      <div className="SpotPrice">${spot.price}/night</div>
 
     </>
   );
