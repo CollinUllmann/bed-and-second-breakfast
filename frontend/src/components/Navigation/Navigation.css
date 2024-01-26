@@ -1,5 +1,12 @@
 .profile-dropdown {
   position: absolute;
+  margin-top: 125px;
+  list-style: none;
+  background: lightgray;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .hidden {
@@ -20,10 +27,32 @@
   align-items: center;
 }
 
-.ProfileButton {
-  width: 5%
+.CreateSpotAndProfileButtonContainer {
+  width: 300px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }
 
-.profile-dropdown {
-  background-color: blue;
+.CreateNewSpotLink {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.ProfileButton {
+  width: 60px;
+  margin-left: 5px;
+  border: 2px solid black;
+  border-bottom-left-radius: 20% 50%;
+  border-top-left-radius: 20% 50%;
+  border-top-right-radius: 20% 50%;
+  border-bottom-right-radius: 20% 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+}
+.ProfileButton:hover {
+  cursor: pointer;
 }

@@ -4,13 +4,19 @@ import { csrfFetch } from "./csrf";
 
 
 //action types
-const LOAD_SPOT_IMAGES = 'spot/LOAD_SPOT_IMAGES'
+const LOAD_SPOT_IMAGES = 'spotImage/LOAD_SPOT_IMAGES'
+const DELETE_SPOT_IMAGE = 'spotImage/DELETE_SPOT_IMAGE'
 
 
 //action creators
 export const loadSpotImages = (spotImages) => ({
   type: LOAD_SPOT_IMAGES,
   spotImages
+})
+
+export const deleteSpotImage = (imageId) => ({
+  type: DELETE_SPOT_IMAGE,
+  imageId
 })
 
 
@@ -29,6 +35,14 @@ export const thunkFetchCreateSpotImage = (spotId, url, preview) => async (dispat
     dispatch(loadSpotImages([newSpotImage]))
     return null
   }
+  return null
+}
+
+export const thunkFetchDeleteSpotImage = (imageId) => async (dispatch) => {
+  await csrfFetch(`/api/spot-images/${imageId}`, {
+    method: 'DELETE'
+  })
+  dispatch(deleteSpotImage(imageId))
   return null
 }
 
@@ -57,6 +71,11 @@ function spotImagesReducer(state = initialState, action) {
       action.spotImages.forEach((spotImage) => {
         spotImageState[spotImage.id] = spotImage
       })
+      return spotImageState
+    }
+    case DELETE_SPOT_IMAGE: {
+      const spotImageState = { ...state };
+      delete spotImageState[action.imageId]
       return spotImageState
     }
     default:

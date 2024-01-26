@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { thunkFetchCreateSpot } from "../../store/spot";
-import { thunkFetchCreateSpotImage } from "../../store/spotImages";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, } from "react-redux"
+import { thunkFetchSpotById, thunkFetchUpdateSpot } from "../../store/spot";
+import { thunkFetchCreateSpotImage, thunkFetchDeleteSpotImage } from "../../store/spotImages";
+import { useNavigate, useParams } from "react-router-dom";
 
-function CreateNewSpotFormPage() {
+function UpdateSpotFormPage() {
+  const { spotId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  
 
   const [country, setCountry] = useState('')
   const [address, setAddress] = useState('')
@@ -25,7 +28,31 @@ function CreateNewSpotFormPage() {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [validationErrors, setValidationErrors] = useState({})
 
-
+  useEffect(() => {
+    dispatch(thunkFetchSpotById(spotId)).then((oldSpot) => {
+      setCountry(oldSpot.country)
+      setAddress(oldSpot.address)
+      setCity(oldSpot.city)
+      setState(oldSpot.state)
+      setLat(oldSpot.lat)
+      setLng(oldSpot.lng)
+      setDescription(oldSpot.description)
+      setTitle(oldSpot.name)
+      setPrice(oldSpot.price)
+      setPreviewImage(oldSpot.SpotImages.find(image => {
+        return image.preview
+      })?.url ?? '')
+      const gallerySpotImages = oldSpot.SpotImages.filter(image => {
+        return !image.preview
+      })
+      console.log('gallerySpotImages: ', gallerySpotImages)
+      setImage1(gallerySpotImages[0]?.url ?? '')
+      setImage2(gallerySpotImages[1]?.url ?? '')
+      setImage3(gallerySpotImages[2]?.url ?? '')
+      setImage4(gallerySpotImages[3]?.url ?? '')
+    }
+    )
+  }, [spotId, dispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +63,7 @@ function CreateNewSpotFormPage() {
       console.log(validationErrors)
       return null
     }
-    let newSpot = {
+    let updatedSpot = {
       address,
       city,
       state,
@@ -49,7 +76,13 @@ function CreateNewSpotFormPage() {
     }
 
     let images = [image1, image2, image3, image4]
-    dispatch(thunkFetchCreateSpot(newSpot)).then(responseSpot => {
+    dispatch(thunkFetchSpotById(spotId)).then((responseSpot) => {
+      const spotImagesToDelete = responseSpot.SpotImages
+      spotImagesToDelete.forEach(spotImage => {
+        dispatch(thunkFetchDeleteSpotImage(spotImage.id))
+      })
+    })
+    dispatch(thunkFetchUpdateSpot(spotId, updatedSpot)).then(responseSpot => {
       const promises = [];
       promises.push(dispatch(thunkFetchCreateSpotImage(responseSpot.id, previewImage, true))) //the true indicates that it's a preview image which should be in the body of the post request
       images.forEach(imageUrl => {
@@ -80,16 +113,17 @@ function CreateNewSpotFormPage() {
 
   useEffect(() => {
     let errors = {}
-    if (!country.length > 0) errors.country = 'Country is required'
-    if (!address.length > 0) errors.address = 'Address is required'
-    if (!city.length > 0) errors.city = 'City is required'
-    if (!state.length > 0) errors.state = 'State is required'
-    if (!lat.length > 0) errors.lat = 'Lat is required'
-    if (!lng.length > 0) errors.lng = 'Lng is required'
-    if (!description.length > 0 || description.length < 30) errors.description = 'Description needs a minimum of 30 characters'
-    if (!title.length > 0) errors.title = 'Name is required'
-    if (!price.length > 0) errors.price = 'Price is required'
-    if (!previewImage.length > 0) errors.previewImage = 'Preview image is required'
+    if (!country?.length > 0) errors.country = 'Country is required'
+    if (!address?.length > 0) errors.address = 'Address is required'
+    if (!city?.length > 0) errors.city = 'City is required'
+    if (!state?.length > 0) errors.state = 'State is required'
+    console.log(lat)
+    !lat && lat !== 0 ? errors.lat = 'Lat is required' : delete errors.lat
+    !lng && lng !== 0 ? errors.lng = 'Lng is required' : delete errors.lng
+    if (!description?.length > 0 || description.length < 30) errors.description = 'Description needs a minimum of 30 characters'
+    if (!title?.length > 0) errors.title = 'Name is required'
+    !price ? errors.price = 'Price is required' : delete errors.price
+    if (!previewImage?.length > 0) errors.previewImage = 'Preview image is required'
     if (!imageFileTypeValidation(previewImage)) errors.previewImage = 'Image URL needs to end in png or jpg (or jpeg)'
     if (!imageFileTypeValidation(image1)) errors.image1 = 'Image URL needs to end in png or jpg (or jpeg)'
     if (!imageFileTypeValidation(image2)) errors.image2 = 'Image URL needs to end in png or jpg (or jpeg)'
@@ -99,10 +133,10 @@ function CreateNewSpotFormPage() {
   }, [country, address, city, state, lat, lng, description, title, price, previewImage, image1, image2, image3])
 
   function imageFileTypeValidation(imageUrl) {
-    if (imageUrl.length < 1) return true
-    if (imageUrl.endsWith('jpg')) return true;
-    if (imageUrl.endsWith('jpeg')) return true;
-    if (imageUrl.endsWith('png')) return true;
+    if (imageUrl?.length < 1) return true
+    if (imageUrl?.endsWith('jpg')) return true;
+    if (imageUrl?.endsWith('jpeg')) return true;
+    if (imageUrl?.endsWith('png')) return true;
     return false
   }
 
@@ -294,7 +328,7 @@ function CreateNewSpotFormPage() {
         {hasSubmitted && validationErrors.image4 && 
         <div>{validationErrors.image4}</div>
         }
-      <button   type='submit'>Create Spot</button>
+      <button   type='submit'>Update your Spot</button>
       </form>
       
     
@@ -302,4 +336,4 @@ function CreateNewSpotFormPage() {
   )
 }
 
-export default CreateNewSpotFormPage
+export default UpdateSpotFormPage

@@ -41,7 +41,7 @@ function ManageUserSpots() {
               <div key={spot.id} className='UserSpotsIndexItemAndButtonsContainer'>
                 <div className='UserSpotsIndexItem' onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
                 <div className='ButtonContainer'>
-                  <button>Update</button>
+                  <button onClick={() => navigate(`/spots/${spot.id}/edit`)}>Update</button>
                   <OpenModalButton
                     buttonText="Delete"
                     modalComponent={<DeleteSpotConfirmationModal spotId={spot?.id}/>}

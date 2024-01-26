@@ -8,6 +8,7 @@ import { loadSpotImages } from "./spotImages";
 const LOAD_SPOTS = 'spot/LOAD_SPOTS'
 const ADD_SPOT = 'spot/ADD_SPOT'
 const DELETE_SPOT = 'spot/DELETE_SPOT'
+const UPDATE_SPOT = 'spot/UPDATE_SPOT'
 
 
 //action creators
@@ -24,6 +25,12 @@ export const addSpot = (spot) => ({
 export const deleteSpot = (spotId) => ({
   type: DELETE_SPOT,
   spotId
+})
+
+export const updateSpot = (spotId, updatedSpot) => ({
+  type: UPDATE_SPOT,
+  spotId,
+  updatedSpot
 })
 
 //thunks
@@ -49,6 +56,7 @@ export const thunkFetchSpotById = (spotId) => async (dispatch) => {
       preview: spotImage.preview
     }
   })))
+  return data
 }
 
 export const thunkFetchCreateSpot = (spot) => async (dispatch) => {
@@ -72,6 +80,18 @@ export const thunkFetchDeleteSpot = (spotId) => (dispatch) => {
   }).then(() => {
     dispatch(deleteSpot(spotId))
   })
+}
+
+export const thunkFetchUpdateSpot = (spotId, updatedSpot) => async (dispatch) => {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updatedSpot)
+  })
+  const data = await res.json()
+  console.log('response from backend updateSpot: ', data)
+  dispatch(updateSpot(spotId, data))
+  return data
 }
 
 
@@ -105,6 +125,11 @@ function spotReducer(state = initialState, action) {
     case DELETE_SPOT: {
       const spotsState = { ...state };
       delete spotsState[action.spotId]
+      return spotsState
+    }
+    case UPDATE_SPOT: {
+      const spotsState = { ...state };
+      spotsState[action.spotId] = action.updateSpot
       return spotsState
     }
     default:

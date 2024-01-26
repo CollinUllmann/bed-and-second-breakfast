@@ -78,7 +78,7 @@ function SpotDetails() {
             <h2>${spot?.price}night</h2>
               <span className="ReviewAvgAndCount">
                 <h3><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)}</h3>
-                {spot?.numReviews && (
+                {spot?.numReviews > 0 && (
                   <h3>{' ·'}{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h3>
                 )}
               </span>

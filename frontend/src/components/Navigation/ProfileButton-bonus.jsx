@@ -5,6 +5,8 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useNavigate } from 'react-router-dom';
+import { MdOutlineSegment } from "react-icons/md";
+
 
 function ProfileButton({ user }) {
   const navigate = useNavigate();
@@ -43,9 +45,10 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className='ProfileButton' onClick={toggleMenu}>
+      <div className='ProfileButton' onClick={toggleMenu}>
+        <MdOutlineSegment />
         <i className="fas fa-user-circle" />
-      </button>
+      </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>

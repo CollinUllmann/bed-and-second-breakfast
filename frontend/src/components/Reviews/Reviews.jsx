@@ -37,7 +37,7 @@ function Reviews({spot}) {
     <>
       <span className="ReviewAvgAndCount">
         <h2><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)} </h2>
-        {spot?.numReviews && (
+        {spot?.numReviews > 0 && (
           <h2> ·{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h2>
         )}
       </span>
