@@ -39,6 +39,7 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    navigate('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -49,34 +50,40 @@ function ProfileButton({ user }) {
         <MdOutlineSegment />
         <i className="fas fa-user-circle" />
       </div>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
-            <li>
+            <div className='DropdownUsernameDiv'>Hello, {user.username}</div>
+            <div className='DropdownFullNameDiv'>{user.firstName} {user.lastName}</div>
+            <div className='DropdownEmailDiv'>{user.email}</div>
+            <div className='ManageSpotsButtonContainer'>
+              <hr className='DropdownDivider' />
               <button onClick={() => navigate('/spots/current')}>Manage Spots</button>
-            </li>
-            <li>
+            </div>
+            <div className='LogoutButtonContainer'>
+              <hr className='DropdownDivider' />
               <button onClick={logout}>Log Out</button>
-            </li>
+            </div>
           </>
         ) : (
-          <>
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <OpenModalMenuItem
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
+          <div className='LoggedOutDropdownDiv'>
+            <div className='DropdownLogInButton'>
+              <OpenModalMenuItem
+                itemText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
+            </div>
+            <div className='DropdownSignUpButton'>
+              <OpenModalMenuItem
+                itemText="Sign Up"
+                onItemClick={closeMenu}
+                modalComponent={<SignupFormModal />}
+              />
+            </div>
+          </div>
         )}
-      </ul>
+      </div>
     </>
   );
 }

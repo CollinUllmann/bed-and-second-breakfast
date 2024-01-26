@@ -36,9 +36,9 @@ function Reviews({spot}) {
   return (
     <>
       <span className="ReviewAvgAndCount">
-        <h2><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)} </h2>
+        <h2 className='ReviewStarHeader'><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)} </h2>
         {spot?.numReviews > 0 && (
-          <h2> ·{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h2>
+          <h2> · {spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h2>
         )}
       </span>
       {sessionUser && !(sessionUser?.id == spot.ownerId) && !includesCurrentUserReview && 
@@ -54,15 +54,17 @@ function Reviews({spot}) {
         let month = months[date.getMonth()]
         let year = date.getFullYear()
         return (
-          <div key={review?.id}>
-            <h2>{user?.firstName}</h2>
-            <h3>{month} {year}</h3>
-            <p>{review.review}</p>
+          <div key={review?.id} className="ReviewContainer">
+            <div className="ReviewFirstName">{user?.firstName}</div>
+            <div className="ReviewDate">{month} {year}</div>
+            <div className="ReviewText">{review.review}</div>
             {sessionUser?.id == review.userId && 
-            <OpenModalButton
-            buttonText="Delete"
-            modalComponent={<DeleteReviewConfirmationModal reviewId={review?.id} spotId={spot?.id}/>}
-          />
+            <div className="DeleteReviewButtonContainer">
+              <OpenModalButton
+              buttonText="Delete"
+              modalComponent={<DeleteReviewConfirmationModal reviewId={review?.id} spotId={spot?.id}/>}
+              />
+            </div>
             }
           </div>
         )

@@ -25,7 +25,7 @@ function SpotsIndex() {
         {
           spots?.map(spot => {
             return (
-              <div className='SpotsIndexItem' key={spot.id} onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot} ></SpotsIndexItem></div>
+              <div className='SpotsIndexItem Tooltip' key={spot.id} onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot} ></SpotsIndexItem></div>
             )
             }
           )

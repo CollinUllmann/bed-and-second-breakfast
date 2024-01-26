@@ -1,12 +1,23 @@
 .profile-dropdown {
   position: absolute;
-  margin-top: 125px;
+  margin-top: 180px;
   list-style: none;
-  background: lightgray;
+  background: rgb(241, 220, 177);
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  color: rgb(88, 67, 25);
+  border: 2px solid rgb(88, 67, 25);
+}
+
+.LoggedOutDropdownDiv {
+  margin-top: 39px;
+  margin-bottom: 39px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hidden {
@@ -52,7 +63,77 @@
   justify-content: center;
   align-items: center;
   height: 25px;
+  background-color: white;
 }
 .ProfileButton:hover {
   cursor: pointer;
+}
+
+.ManageSpotsButtonContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LogoutButtonContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.DropdownDivider {
+  width: 75%;
+}
+
+.DropdownUsernameDiv {
+  margin: 10px 10px 0 10px;
+}
+
+.DropdownFullNameDiv {
+  margin: 0 10px;
+}
+
+.DropdownEmailDiv {
+  margin: 0 10px;
+}
+
+.DropdownLogInButton {
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 30px;
+  color: black;
+}
+.DropdownLogInButton:hover {
+  cursor: pointer;
+}
+
+.DropdownSignUpButton {
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  height: 30px;
+  color: black;
+}
+.DropdownSignUpButton:hover {
+  cursor: pointer;
+}
+
+.CreateNewSpotLink {
+  font-weight: 600;
+  color: brown;
+  font-size: large;
 }

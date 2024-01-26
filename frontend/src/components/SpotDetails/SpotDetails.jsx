@@ -70,20 +70,22 @@ function SpotDetails() {
       </div>
       <div className="SpotDetailsDescriptionAndReservationContainer">
         <div className="SpotDetailsHostDescription">
-          <h2>Hosted by {owner?.firstName} {owner?.lastName}</h2>
-          <p>{spot?.description}</p>
+          <h2 className="SpotDetailsHostedByTitle">Hosted by {owner?.firstName} {owner?.lastName}</h2>
+          <p className="SpotDetailsDescription">{spot?.description}</p>
         </div>
         <div className="SpotDetailsReservationContainer">
-          <span className="SpotDetailsPriceRatingSpan">
+          <div className="SpotDetailsPriceRatingSpan">
             <h2>${spot?.price}night</h2>
-              <span className="ReviewAvgAndCount">
-                <h3><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)}</h3>
+              <div className="ReviewAvgAndCount">
+                <h3 className='ReviewStarHeader'><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)}</h3>
                 {spot?.numReviews > 0 && (
-                  <h3>{' ·'}{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h3>
+                  <h3>{'· '}{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h3>
                 )}
-              </span>
-          </span>
-          <button onClick={()=>alert('Feature Coming Soon!')}>Reserve</button>
+              </div>
+          </div>
+          <div className="ReserveButtonContainer">
+            <div className='ReserveButton' onClick={()=>alert('Feature Coming Soon!')}>Reserve</div>
+          </div>
         </div>
       </div>
       {spot ? <Reviews spot={spot}/> : <></>}

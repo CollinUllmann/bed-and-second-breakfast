@@ -1,8 +1,14 @@
 .LoginForm {
   display: flex;
   flex-direction: column;
+  background-color: rgb(241, 220, 177);
 }
 
 .FormInput {
   margin: 5% 0;
+}
+
+.LogInHeaderDiv {
+  display: flex;
+  justify-content: center;
 }

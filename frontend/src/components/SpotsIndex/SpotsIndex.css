@@ -4,3 +4,7 @@
   justify-content: space-around;
   margin: 0px 20px;
 }
+
+.SpotsIndexItem {
+  background-color: rgb(241, 220, 177);
+}

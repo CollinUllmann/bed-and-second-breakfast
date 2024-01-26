@@ -2,8 +2,9 @@
   aspect-ratio: 1.25;
   width: 25%;
   margin: 20px;
-  border: 3px solid black;
+  border: 3px solid rgb(88, 67, 25);
   min-width: 200px;
+  color: rgb(65, 48, 15)
 }
 
 .SpotsIndexItem:hover {
@@ -24,6 +25,25 @@
 .LocationRatingSpan {
   display: flex;
   justify-content: space-between;
+  margin: 3px 3px 0 3px;
+}
+
+.SpotCityState {
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.SpotPrice {
+  font-size: larger;
+  margin-top: 5px;
+  font-weight: 600;
+  margin-left: 3px;
+}
+
+.SpotRating {
+  font-size: larger;
+  font-weight: 600;
+
 }
 
 

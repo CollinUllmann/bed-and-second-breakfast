@@ -25,7 +25,7 @@ function SpotsIndexItem({ spot }) {
       </div>
       <span className='LocationRatingSpan'>
         <div className="SpotCityState">{spot.city}, {spot.state}</div>
-        <div><FaStar /> {isNaN(spot.avgRating) ? 'New!' : spot.avgRating}</div>
+        <div className='SpotRating'><FaStar /> {isNaN(spot.avgRating) ? 'New!' : spot.avgRating}</div>
       </span>
       <div className="SpotPrice">${spot.price}/night</div>
 

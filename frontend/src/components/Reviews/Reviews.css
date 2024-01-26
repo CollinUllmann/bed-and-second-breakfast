@@ -1,3 +1,32 @@
 .ReviewAvgAndCount {
   display: flex;
 }
+
+.ReviewFirstName {
+  font-size: x-large;
+  font-weight: 600;
+  margin: 5px 0 5px 5px;
+}
+
+.ReviewDate {
+  font-size: larger;
+  font-weight: 600;
+  margin: 0 0 5px 5px;
+}
+
+.ReviewContainer {
+  margin: 20px 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(241, 220, 177);
+  border-radius: 10px;
+  border: 2px solid rgb(65, 48, 15);
+}
+
+.DeleteReviewButtonContainer {
+  margin: 0 0 10px 10px;
+}
+
+.ReviewText {
+  margin: 0 0 10px 5px;
+}

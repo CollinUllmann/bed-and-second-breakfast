@@ -1,1 +1,5 @@
 /* TODO: Add sitewide styles */
+body {
+  background-image: url('https://i.pinimg.com/474x/a2/d2/d4/a2d2d404c591e0cc4c5da4d6e4585e0d.jpg');
+  font-family: ui-serif;
+}

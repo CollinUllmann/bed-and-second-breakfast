@@ -1,3 +1,8 @@
+
+body {
+  color: rgb(65, 48, 15)
+}
+
 .SpotDetailsImageContainer {
   display: flex;
   flex-direction: row;
@@ -44,15 +49,60 @@
 .SpotDetailsHostDescription {
   margin: 0 10% 0 0;
   width: 70%;
+  border: 2px solid rgb(65, 48, 15);
+  background-color: rgb(241, 220, 177);
+  border-radius: 10px;
+  margin: 5px 30px 5px 0;
+}
+
+.SpotDetailsHostedByTitle {
+  margin: 15px 0 15px 5px;
+}
+
+.SpotDetailsDescription {
+  margin: 0 5px 15px 5px;
 }
 
 .SpotDetailsReservationContainer {
   display: flex;
   flex-direction: column;
   width: 30%;
+  min-width: 280px;
+  border: 2px solid rgb(65, 48, 15);
+  background-color: rgb(241, 220, 177);
+  border-radius: 10px;
 }
 
 .SpotDetailsPriceRatingSpan {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.ReviewStarHeader {
+  display: flex;
+  margin-right: 4px;
+}
+
+.ReserveButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  width: 80%;
+  height: 30px;
+  box-shadow: black 5px 5px 5px;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+}
+.ReserveButton:hover {
+  cursor: pointer;
+}
+
+.ReserveButtonContainer {
+  display: flex;
+  justify-content: center;
+  height: 50px;
 }
