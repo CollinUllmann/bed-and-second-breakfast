@@ -7,6 +7,7 @@ import { loadSpotImages } from "./spotImages";
 //action types
 const LOAD_SPOTS = 'spot/LOAD_SPOTS'
 const ADD_SPOT = 'spot/ADD_SPOT'
+const DELETE_SPOT = 'spot/DELETE_SPOT'
 
 
 //action creators
@@ -18,6 +19,11 @@ export const loadSpots = (spots) => ({
 export const addSpot = (spot) => ({
   type: ADD_SPOT,
   spot
+})
+
+export const deleteSpot = (spotId) => ({
+  type: DELETE_SPOT,
+  spotId
 })
 
 //thunks
@@ -60,6 +66,14 @@ export const thunkFetchCreateSpot = (spot) => async (dispatch) => {
   return null
 }
 
+export const thunkFetchDeleteSpot = (spotId) => (dispatch) => {
+  return csrfFetch(`/api/spots/${spotId}`, {
+    method: 'DELETE'
+  }).then(() => {
+    dispatch(deleteSpot(spotId))
+  })
+}
+
 
 //selectors
 export const selectSpots = state => state.spots
@@ -87,6 +101,11 @@ function spotReducer(state = initialState, action) {
     }
     case ADD_SPOT: {
       return { ...state, entries: { ...state.entries, [action.spot.id]: action.spot } }
+    }
+    case DELETE_SPOT: {
+      const spotsState = { ...state };
+      delete spotsState[action.spotId]
+      return spotsState
     }
     default:
       return state;

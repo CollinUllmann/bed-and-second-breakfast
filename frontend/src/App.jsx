@@ -9,6 +9,7 @@ import Navigation from './components/Navigation/Navigation-bonus';
 import * as sessionActions from './store/session';
 import SpotDetails from './components/SpotDetails';
 import ManageUserSpots from './components/ManageUserSpots/ManageUserSpots';
+import { Modal } from './context/Modal';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function Layout() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && <Outlet />}
+      <Modal />
     </>
   );
 }

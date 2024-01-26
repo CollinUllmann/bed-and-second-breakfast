@@ -7,7 +7,7 @@ import { thunkFetchSpotById } from '../../store/spot';
 // import * as sessionActions from '../../store/session';
 // import './SignupForm.css';
 
-function DeleteConfirmationModal({reviewId, spotId}) {
+function DeleteReviewConfirmationModal({reviewId, spotId}) {
   const dispatch = useDispatch()
   const {closeModal} = useModal();
 
@@ -16,8 +16,7 @@ function DeleteConfirmationModal({reviewId, spotId}) {
   }
 
   const handleDelete = (reviewId) => {
-    const x = dispatch(thunkFetchDeleteReview(reviewId))
-    x.then(() => {
+    dispatch(thunkFetchDeleteReview(reviewId)).then(() => {
         dispatch(thunkFetchSpotById(spotId))
         closeModal()
       }
@@ -36,4 +35,4 @@ function DeleteConfirmationModal({reviewId, spotId}) {
   );
 }
 
-export default DeleteConfirmationModal;
+export default DeleteReviewConfirmationModal;

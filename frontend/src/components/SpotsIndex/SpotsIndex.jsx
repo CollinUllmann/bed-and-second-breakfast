@@ -6,8 +6,10 @@ import { useEffect } from 'react';
 import './SpotsIndex.css';
 import SpotsIndexItem from '../SpotsIndexItem/SpotsIndexItem';
 import { selectSpotsArray, thunkFetchSpots } from '../../store/spot';
+import { useNavigate } from 'react-router-dom';
 
 function SpotsIndex() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const spots = useSelector(selectSpotsArray)
@@ -23,7 +25,7 @@ function SpotsIndex() {
         {
           spots?.map(spot => {
             return (
-              <div className='SpotsIndexItem' key={spot.id}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
+              <div className='SpotsIndexItem' key={spot.id} onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot} ></SpotsIndexItem></div>
             )
             }
           )

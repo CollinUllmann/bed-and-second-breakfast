@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import './Reviews.css'
 import ReviewFormModal from "../ReviewFormModal/ReviewFormModal";
 import OpenModalButton from '../OpenModalButton';
-import DeleteConfirmationModal from "../DeleteConfirmationModal";
+import DeleteReviewConfirmationModal from "../DeleteReviewConfirmationModal";
 
 
 
@@ -61,7 +61,7 @@ function Reviews({spot}) {
             {sessionUser?.id == review.userId && 
             <OpenModalButton
             buttonText="Delete"
-            modalComponent={<DeleteConfirmationModal reviewId={review?.id} spotId={spot?.id}/>}
+            modalComponent={<DeleteReviewConfirmationModal reviewId={review?.id} spotId={spot?.id}/>}
           />
             }
           </div>

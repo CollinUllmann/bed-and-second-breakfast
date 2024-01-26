@@ -8,6 +8,8 @@ import SpotsIndexItem from '../SpotsIndexItem/SpotsIndexItem';
 import { selectSpotsArray, thunkFetchSpots } from '../../store/spot';
 // import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import OpenModalButton from '../OpenModalButton';
+import DeleteSpotConfirmationModal from '../DeleteSpotConfirmationModal/DeleteSpotConfirmationModal';
 
 function ManageUserSpots() {
   const navigate = useNavigate();
@@ -17,12 +19,10 @@ function ManageUserSpots() {
 
   const spots = useSelector(selectSpotsArray)
 
-  console.log('spots: ', spots)
 
   const userSpots = spots.filter(spot => {
-    return spot.ownerId == sessionUser.id
+    return spot.ownerId == sessionUser?.id
   })
-  console.log("user's spots: ", userSpots)
 
   useEffect(() => {
     dispatch(thunkFetchSpots())
@@ -42,7 +42,10 @@ function ManageUserSpots() {
                 <div className='UserSpotsIndexItem' onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
                 <div className='ButtonContainer'>
                   <button>Update</button>
-                  <button>Delete</button>
+                  <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={<DeleteSpotConfirmationModal spotId={spot?.id}/>}
+                  />
                 </div>
               </div>
             )
