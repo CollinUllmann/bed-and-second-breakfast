@@ -33,17 +33,17 @@ module.exports = {
       },
       {
         spotId: 1,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 1,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 1,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -58,17 +58,17 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 2,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 2,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -78,17 +78,17 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 3,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 3,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -108,16 +108,16 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 4,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       }, {
         spotId: 4,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -132,17 +132,17 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 5,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 5,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -157,17 +157,17 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 6,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 6,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -182,17 +182,17 @@ module.exports = {
       },
       {
         spotId: 7,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 7,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 7,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -207,17 +207,17 @@ module.exports = {
       },
       {
         spotId: 8,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
@@ -232,17 +232,17 @@ module.exports = {
       },
       {
         spotId: 9,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 9,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       },
       {
         spotId: 9,
-        url: 'https://afar.brightspotcdn.com/dims4/default/c603f3d/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg',
+        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
         preview: false
       }
 
