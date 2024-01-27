@@ -23,22 +23,22 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: 'https://i.etsystatic.com/21086983/r/il/8b179f/3645143301/il_570xN.3645143301_65sc.jpg',
+        url: '/bag-end/bag-end-1.png',
         preview: true
       },
       {
         spotId: 1,
-        url: 'https://i.pinimg.com/originals/90/53/0a/90530a9aa2f84a0a01ec522f8e9ebccf.jpg',
+        url: '/bag-end/bag-end-2.png',
         preview: false
       },
       {
         spotId: 1,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/bag-end/bag-end-3.png',
         preview: false
       },
       {
         spotId: 1,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/bag-end/bag-end-4.png',
         preview: false
       },
       {
@@ -98,17 +98,17 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: 'https://64.media.tumblr.com/c12afecd701114d8c3476d6ece3dab23/tumblr_inline_nn6cv0uiIv1rnrk68_1280.png',
+        url: '/mines-of-moria/mines-of-moria-1.png',
         preview: true
       },
       {
         spotId: 4,
-        url: 'https://www.giantbomb.com/a/uploads/scale_medium/0/118/795059-moria_gate_1024.jpg',
+        url: '/mines-of-moria/mines-of-moria-2.png',
         preview: false
       },
       {
         spotId: 4,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/mines-of-moria/mines-of-moria-3.png',
         preview: false
       },
       {
@@ -122,17 +122,17 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: 'https://i.etsystatic.com/20317338/r/il/b44279/3443441253/il_570xN.3443441253_9e73.jpg',
+        url: '/lothlorien/lothlorien-1.png',
         preview: true
       },
       {
         spotId: 5,
-        url: 'https://pm1.aminoapps.com/6319/ae051076b6e3469e98152f9bf2d832af83e77696_00.jpg',
+        url: '/lothlorien/lothlorien-2.png',
         preview: false
       },
       {
         spotId: 5,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/lothlorien/lothlorien-3.png',
         preview: false
       },
       {
@@ -147,17 +147,17 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: 'https://i.etsystatic.com/17727358/r/il/b7178a/3462596045/il_fullxfull.3462596045_3eyu.jpg',
+        url: '/minas-tirith/minas-tirith-1.png',
         preview: true
       },
       {
         spotId: 6,
-        url: 'https://i.pinimg.com/474x/63/d2/da/63d2da67a9dfd3f89b8150260ec1f280.jpg',
+        url: '/minas-tirith/minas-tirith-2.png',
         preview: false
       },
       {
         spotId: 6,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/minas-tirith/minas-tirith-3.png',
         preview: false
       },
       {

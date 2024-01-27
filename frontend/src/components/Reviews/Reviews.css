@@ -21,6 +21,7 @@
   background-color: rgb(241, 220, 177);
   border-radius: 10px;
   border: 2px solid rgb(65, 48, 15);
+  font-style: oblique;
 }
 
 .DeleteReviewButtonContainer {
@@ -30,3 +31,4 @@
 .ReviewText {
   margin: 0 0 10px 5px;
 }
+

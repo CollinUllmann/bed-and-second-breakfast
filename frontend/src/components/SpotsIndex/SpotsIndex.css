@@ -8,3 +8,26 @@
 .SpotsIndexItem {
   background-color: rgb(241, 220, 177);
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(65, 48, 15);
+  border: 2px solid rgb(241, 220, 177);
+  font-weight: 600;
+  color: rgb(241, 220, 177);
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
