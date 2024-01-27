@@ -65,7 +65,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.email && <p className='ErrorMessage'>{errors.email}</p>}
+        {errors.email && <p className='SignUpErrorMessage'>{errors.email}</p>}
         <label className='SignUpFormInput'>
           <input
             type="text"
@@ -75,7 +75,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {hasSubmitted && errors.username && <p className='ErrorMessage'>{errors.username}</p>}
+        {hasSubmitted && errors.username && <p className='SignUpErrorMessage'>{errors.username}</p>}
         <label className='SignUpFormInput'>
           <input
             type="text"
@@ -85,7 +85,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.firstName && <p className='ErrorMessage'>{errors.firstName}</p>}
+        {errors.firstName && <p className='SignUpErrorMessage'>{errors.firstName}</p>}
         <label className='SignUpFormInput'>
           <input
             type="text"
@@ -95,7 +95,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.lastName && <p className='ErrorMessage'>{errors.lastName}</p>}
+        {errors.lastName && <p className='SignUpErrorMessage'>{errors.lastName}</p>}
         <label className='SignUpFormInput'>
           <input
             type="password"
@@ -105,7 +105,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {hasSubmitted && errors.password && <p className='ErrorMessage'>{errors.password}</p>}
+        {hasSubmitted && errors.password && <p className='SignUpErrorMessage'>{errors.password}</p>}
         <label className='SignUpFormInput'>
           <input
             type="password"
@@ -115,7 +115,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.confirmPassword && <p className='ErrorMessage'>{errors.confirmPassword}</p>}
+        {errors.confirmPassword && <p className='SignUpErrorMessage'>{errors.confirmPassword}</p>}
         <div className='SubmitButtonDiv'>
           <button disabled={errors.username || errors.password || email.length < 1 || firstName.length < 1 || lastName.length < 1 || confirmPassword.length < 1} type="submit" className='SignUpSubmitButton'>Sign Up</button>
         </div>
