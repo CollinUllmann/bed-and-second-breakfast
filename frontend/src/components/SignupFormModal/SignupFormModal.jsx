@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as sessionActions from '../../store/session';
-import './SignupForm.css';
+import './SignupFormModal.css';
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function SignupFormModal() {
     setHasSubmitted(true)
     if (password === confirmPassword) {
       setErrors({});
-      setHasSubmitted(false)
+      // setHasSubmitted(false)
       return dispatch(
         sessionActions.signup({
           email,
@@ -51,69 +51,74 @@ function SignupFormModal() {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <div className='SignUpHeaderDiv'>
+        <h1>Sign Up</h1>
+        
+      </div>
       <form className='SignupForm' onSubmit={handleSubmit}>
-        <label className='FormInput'>
-          Email
+        <label className='SignUpFormInput'>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label className='FormInput'>
-          Username
+        {errors.email && <p className='ErrorMessage'>{errors.email}</p>}
+        <label className='SignUpFormInput'>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder='Username'
             required
           />
         </label>
-        {hasSubmitted && errors.username && <p>{errors.username}</p>}
-        <label className='FormInput'>
-          First Name
+        {hasSubmitted && errors.username && <p className='ErrorMessage'>{errors.username}</p>}
+        <label className='SignUpFormInput'>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder='First Name'
             required
           />
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
-        <label className='FormInput'>
-          Last Name
+        {errors.firstName && <p className='ErrorMessage'>{errors.firstName}</p>}
+        <label className='SignUpFormInput'>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder='Last Name'
             required
           />
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
-        <label className='FormInput'>
-          Password
+        {errors.lastName && <p className='ErrorMessage'>{errors.lastName}</p>}
+        <label className='SignUpFormInput'>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
             required
           />
         </label>
-        {hasSubmitted && errors.password && <p>{errors.password}</p>}
-        <label className='FormInput'>
-          Confirm Password
+        {hasSubmitted && errors.password && <p className='ErrorMessage'>{errors.password}</p>}
+        <label className='SignUpFormInput'>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder='Confirm Password'
             required
           />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button disabled={errors.username || errors.password} type="submit">Sign Up</button>
+        {errors.confirmPassword && <p className='ErrorMessage'>{errors.confirmPassword}</p>}
+        <div className='SubmitButtonDiv'>
+          <button disabled={errors.username || errors.password || email.length < 1 || firstName.length < 1 || lastName.length < 1 || confirmPassword.length < 1} type="submit" className='SignUpSubmitButton'>Sign Up</button>
+        </div>
       </form>
     </>
   );
