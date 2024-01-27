@@ -3,7 +3,7 @@
 // import { useDispatch, useSelector } from 'react-redux';
 // // import { Navigate } from 'react-router-dom';
 // import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { FaStar } from "react-icons/fa6";
 import './SpotsIndexItem.css';
 // import { useEffect } from 'react';

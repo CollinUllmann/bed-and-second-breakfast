@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkFetchCreateReview, thunkFetchReviewsBySpotId } from '../../store/reviews';
@@ -19,10 +19,6 @@ function ReviewFormModal({spot}) {
   const [rating, setRating] = useState(0)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const { closeModal } = useModal();
-
-  useEffect(() => {
-    review.length < 9 ? setErrors({...errors, review: 'Review must be at least 10 characters'}) : delete errors.review
-  }, [review])
 
 
   const handleSubmit = (e) => {
