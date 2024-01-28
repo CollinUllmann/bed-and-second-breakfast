@@ -1,6 +1,13 @@
 .ReviewAvgAndCount {
   display: flex;
+  background-color: rgb(241, 220, 177);
+  border-radius: 10px;
+  border: 2px solid rgb(65, 48, 15);
+  margin: 30px 0 20px 0;
+  padding: 0 20px 0 5px;
+  width: fit-content;
 }
+
 
 .ReviewFirstName {
   font-size: x-large;

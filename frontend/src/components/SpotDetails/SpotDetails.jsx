@@ -52,8 +52,10 @@ function SpotDetails() {
 
   return (
     <>
-      <h2>{spot?.name}</h2>
-      <h3>{spot?.city}, {spot?.state}, {spot?.country}</h3>
+      <div className="TitleAndCityStateCountryDiv">
+        <div className="Title">{spot?.name}</div>
+        <div className="CityStateCountry">{spot?.city}, {spot?.state}, {spot?.country}</div>
+      </div>
       <div className="SpotDetailsImageContainer">
         <div className="SpotDetailsPreviewCell">
           <img className='SpotDetailsPreviewImage' src={previewSpotImage?.url} />
@@ -76,7 +78,7 @@ function SpotDetails() {
         <div className="SpotDetailsReservationContainer">
           <div className="SpotDetailsPriceRatingSpan">
             <h2>${spot?.price}night</h2>
-              <div className="ReviewAvgAndCount">
+              <div className="SpotDetailsReviewAvgAndCount">
                 <h3 className='ReviewStarHeader'><FaStar/>{(isNaN(spot?.avgStarRating) || spot?.avgStarRating == null) ? 'New!' : Number(spot?.avgStarRating).toFixed(1)}</h3>
                 {spot?.numReviews > 0 && (
                   <h3>{'· '}{spot?.numReviews} {spot?.numReviews == 1 ? 'review' : 'reviews'}</h3>
@@ -87,6 +89,9 @@ function SpotDetails() {
             <div className='ReserveButton' onClick={()=>alert('Feature Coming Soon!')}>Reserve</div>
           </div>
         </div>
+      </div>
+      <div className="HrDiv">
+        <hr className="ReviewsPageBreak"/>
       </div>
       {spot ? <Reviews spot={spot}/> : <></>}
     </>

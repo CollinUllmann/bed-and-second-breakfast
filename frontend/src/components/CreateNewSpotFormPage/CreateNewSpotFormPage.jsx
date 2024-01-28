@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { thunkFetchCreateSpot } from "../../store/spot";
 import { thunkFetchCreateSpotImage } from "../../store/spotImages";
 import { useNavigate } from "react-router-dom";
+import './CreateNewSpotFormPage.css'
 
 function CreateNewSpotFormPage() {
   const navigate = useNavigate();
@@ -109,192 +110,222 @@ function CreateNewSpotFormPage() {
 
   return (
     <>
-      <h1>Create a new Spot</h1>
-      <form onSubmit={handleSubmit}>
-      <h2>Wheres your place located?</h2>
-      <h4>Guests will only get your exact address once they booked a reservation</h4>
-      <label>
-        Country
-        <input
-          type='text'
-          value={country}
-          placeholder="Country"
-          onChange={(e) => setCountry(e.target.value)}
-          name='locationCountry'
-          required
-        />
-      </label>
-      {hasSubmitted && validationErrors.country && 
-        <div>{validationErrors.country}</div>
-      }
-      <label>
-        Street Address
-        <input
-          type='text'
-          value={address}
-          placeholder="Street Address"
-          onChange={(e) => setAddress(e.target.value)}
-          name='streetAddress'
-          required
-        />
-      </label>
-      {hasSubmitted && validationErrors.address && 
-        <div>{validationErrors.address}</div>
-      }
-      <label>
-        City
-        <input
-          type='text'
-          value={city}
-          placeholder="City"
-          onChange={(e) => setCity(e.target.value)}
-          name='city'
-          required
-        />
-      </label>
-      {hasSubmitted && validationErrors.city && 
-        <div>{validationErrors.city}</div>
-      }
-      <label>
-        State
-        <input
-          type='text'
-          value={state}
-          placeholder="State"
-          onChange={(e) => setState(e.target.value)}
-          name='state'
-          required
-        />
-      </label>
-      {hasSubmitted && validationErrors.state && 
-        <div>{validationErrors.state}</div>
-      }
-      <label>
-        Latitude
-        <input
-          type='text'
-          value={lat}
-          placeholder="Latitude"
-          onChange={(e) => setLat(e.target.value)}
-          name='latitude'
-          required
-        />
-      </label>
-      {hasSubmitted && validationErrors.lat && 
-        <div>{validationErrors.lat}</div>
-      }
-      <label>
-        Longitude
-        <input
-          type='text'
-          value={lng}
-          placeholder="Longitude"
-          onChange={(e) => setLng(e.target.value)}
-          name='longitude'
-          required
-        />
-      </label>
-      {hasSubmitted && validationErrors.lng && 
-        <div>{validationErrors.lng}</div>
-      }
-      <h2>Describe your place to guests</h2>
-      <p>Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>       
-        <textarea
-          value={description}
-          placeholder="Please write at least 30 characters"
-          onChange={(e) => setDescription(e.target.value)}
-          name='description'
-          required
-        />
-        {hasSubmitted && validationErrors.description && 
-        <div>{validationErrors.description}</div>
+      <h1 id="CreateSpotFormTitle">Create a New Spot</h1>
+      <form onSubmit={handleSubmit} className="CreateSpotForm">
+      <div className="CreateSpotFormDiv">
+        <h2>Where's your place located?</h2>
+        <div className="CreateSpotFormInputDescription">Guests will only get your exact address once they booked a reservation</div>
+          
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={country}
+            placeholder="Country"
+            onChange={(e) => setCountry(e.target.value)}
+            name='locationCountry'
+            required
+          />
+        {hasSubmitted && validationErrors.country && 
+          <div>{validationErrors.country}</div>
         }
-      <h2>Create a title for your spot</h2>
-      <p>Catch guests attention with a spot title that highlights what makes your place special.</p>       
-        <input
-          type='text'
-          value={title}
-          placeholder="Name of your spot"
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          name='title'
-        />
-        {hasSubmitted && validationErrors.title && 
-        <div>{validationErrors.title}</div>
-      }
-      <h2>Set a base price for your spot</h2>
-      <p>Competitive pricing can help your listing stand out and rank higher in search results</p>
-      <label>
-        $
-        <input
-          type='text'
-          value={price}
-          placeholder="Price per night (USD)"
-          onChange={(e) => setPrice(e.target.value)}
-          name='price'
-          required
-        />
-      </label>   
-      {hasSubmitted && validationErrors.price && 
-        <div>{validationErrors.price}</div>
-      }
-      <h2>Liven up your spot with photos</h2>
-      <p>Submit a link to at least one photo to publish your spot</p>       
-        <input
-          type='text'
-          value={previewImage}
-          placeholder="Preview Image URL"
-          onChange={(e) => setPreviewImage(e.target.value)}
-          name='previewImage'
-          required
-        />  
-        {hasSubmitted && validationErrors.previewImage && 
-        <div>{validationErrors.previewImage}</div>
-        }
-        <input
-          type='text'
-          value={image1}
-          placeholder="Image URL"
-          onChange={(e) => setImage1(e.target.value)}
-          name='image1'
-        />  
-        {hasSubmitted && validationErrors.image1 && 
-        <div>{validationErrors.image1}</div>
-        }
-        <input
-          type='text'
-          value={image2}
-          placeholder="Image URL"
-          onChange={(e) => setImage2(e.target.value)}
-          name='image2'
+          
+          <input
+            className="CreateSpotInput"
 
-        /> 
-        {hasSubmitted && validationErrors.image2 && 
-        <div>{validationErrors.image2}</div>
-        } 
-        <input
-          type='text'
-          value={image3}
-          placeholder="Image URL"
-          onChange={(e) => setImage3(e.target.value)}
-          name='image3'
-
-        />  
-        {hasSubmitted && validationErrors.image3 && 
-        <div>{validationErrors.image3}</div>
+            type='text'
+            value={address}
+            placeholder="Street Address"
+            onChange={(e) => setAddress(e.target.value)}
+            name='streetAddress'
+            required
+          />
+        {hasSubmitted && validationErrors.address && 
+          <div>{validationErrors.address}</div>
         }
-        <input
-          type='text'
-          value={image4}
-          placeholder="Image URL"
-          onChange={(e) => setImage4(e.target.value)}
-          name='image4'
+        <div id="CreateSpotCityStateDiv" className="CreateSpotInput">
+        {hasSubmitted && validationErrors.city && 
+              <div>{validationErrors.city}</div>
+            }
+          <input
+            type='text'
+            value={city}
+            placeholder="City"
+            onChange={(e) => setCity(e.target.value)}
+            name='city'
+            required
+          />
+          <div className="CreateSpotSeparationComma"> , </div>
+          
+          <input
+            type='text'
+            value={state}
+            placeholder="State"
+            onChange={(e) => setState(e.target.value)}
+            name='state'
+            required
+          />
+          
+          {hasSubmitted && validationErrors.state && 
+            <div>{validationErrors.state}</div>
+          }
+        </div>
+        <div id="CreateSpotLatLngDiv"  className="CreateSpotInput">
+        {hasSubmitted && validationErrors.lat && 
+            <div>{validationErrors.lat}</div>
+          }
+          <input
+            type='text'
+            value={lat}
+            placeholder="Latitude"
+            onChange={(e) => setLat(e.target.value)}
+            name='latitude'
+            required
+          />
+          
+          <div className="CreateSpotSeparationComma"> , </div>
 
-        />  
-        {hasSubmitted && validationErrors.image4 && 
-        <div>{validationErrors.image4}</div>
+          <input
+            type='text'
+            value={lng}
+            placeholder="Longitude"
+            onChange={(e) => setLng(e.target.value)}
+            name='longitude'
+            required
+          />
+          {hasSubmitted && validationErrors.lng && 
+            <div>{validationErrors.lng}</div>
+          }
+          
+        </div>  
+      </div>
+      <div className="HrDiv">
+        <hr className="CreateSpotPageBreak"/>
+      </div>
+      <div className="CreateSpotFormDiv">
+        <h2>Describe your place to guests</h2>
+        <p className="CreateSpotFormInputDescription">Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>       
+          <textarea
+            className="CreateSpotInput"
+            id="CreateSpotDescription"
+            rows='6'
+            value={description}
+            placeholder="Please write at least 30 characters"
+            onChange={(e) => setDescription(e.target.value)}
+            name='description'
+            required
+          />
+          {hasSubmitted && validationErrors.description && 
+          <div>{validationErrors.description}</div>
+          }
+      </div>
+      <div className="HrDiv">
+        <hr className="CreateSpotPageBreak"/>
+      </div>
+      <div className="CreateSpotFormDiv">
+        <h2>Create a title for your spot</h2>
+        <p className="CreateSpotFormInputDescription">Catch guests attention with a spot title that highlights what makes your place special.</p>       
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={title}
+            placeholder="Name of your spot"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            name='title'
+          />
+          {hasSubmitted && validationErrors.title && 
+          <div>{validationErrors.title}</div>
         }
-      <button   type='submit'>Create Spot</button>
+      </div>
+      <div className="HrDiv">
+        <hr className="CreateSpotPageBreak"/>
+      </div>
+      <div className="CreateSpotFormDiv">
+        <h2>Set a base price for your spot</h2>
+        <p className="CreateSpotFormInputDescription">Competitive pricing can help your listing stand out and rank higher in search results</p>
+        <label>
+          $
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={price}
+            placeholder="Price per night (USD)"
+            onChange={(e) => setPrice(e.target.value)}
+            name='price'
+            required
+          />
+        </label>   
+        {hasSubmitted && validationErrors.price && 
+          <div>{validationErrors.price}</div>
+        }
+      </div>
+      <div className="HrDiv">
+        <hr className="CreateSpotPageBreak"/>
+      </div>
+      <div className="CreateSpotFormDiv">
+        <h2>Liven up your spot with photos</h2>
+        <p className="CreateSpotFormInputDescription">Submit a link to at least one photo to publish your spot</p>       
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={previewImage}
+            placeholder="Preview Image URL"
+            onChange={(e) => setPreviewImage(e.target.value)}
+            name='previewImage'
+            required
+          />  
+          {hasSubmitted && validationErrors.previewImage && 
+          <div>{validationErrors.previewImage}</div>
+          }
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={image1}
+            placeholder="Image URL"
+            onChange={(e) => setImage1(e.target.value)}
+            name='image1'
+          />  
+          {hasSubmitted && validationErrors.image1 && 
+          <div>{validationErrors.image1}</div>
+          }
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={image2}
+            placeholder="Image URL"
+            onChange={(e) => setImage2(e.target.value)}
+            name='image2'
+
+          /> 
+          {hasSubmitted && validationErrors.image2 && 
+          <div>{validationErrors.image2}</div>
+          } 
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={image3}
+            placeholder="Image URL"
+            onChange={(e) => setImage3(e.target.value)}
+            name='image3'
+
+          />  
+          {hasSubmitted && validationErrors.image3 && 
+          <div>{validationErrors.image3}</div>
+          }
+          <input
+            className="CreateSpotInput"
+            type='text'
+            value={image4}
+            placeholder="Image URL"
+            onChange={(e) => setImage4(e.target.value)}
+            name='image4'
+
+          />  
+          {hasSubmitted && validationErrors.image4 && 
+          <div>{validationErrors.image4}</div>
+          }
+      </div>
+      <div id="CreateSpotSubmitButton" onClick={handleSubmit}>Create Spot</div>
       </form>
       
     

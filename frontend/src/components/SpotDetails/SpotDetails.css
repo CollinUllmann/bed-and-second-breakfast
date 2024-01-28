@@ -8,6 +8,27 @@ body {
   flex-direction: row;
 }
 
+.TitleAndCityStateCountryDiv {
+  margin: 0 10% 0 0;
+  width:fit-content;
+  border: 2px solid rgb(65, 48, 15);
+  background-color: rgb(241, 220, 177);
+  border-radius: 10px;
+  padding: 0 30px 0 0;
+  margin: 5px 30px 5px 0;
+  color: rgb(65, 48, 15);
+}
+.Title {
+  margin: 10px 0 0 10px;
+  font-size: x-large;
+  font-weight: 900;
+}
+.CityStateCountry {
+  margin: 0 0 10px 10px;
+  font-size: large;
+  font-weight: 600;
+}
+
 .SpotDetailsImageGallery {
   display: grid;
   width: 0;
@@ -80,6 +101,10 @@ body {
   margin: 0 20px;
 }
 
+.SpotDetailsReviewAvgAndCount {
+  display: flex;
+}
+
 .ReviewStarHeader {
   display: flex;
   margin-right: 4px;
@@ -105,4 +130,16 @@ body {
   display: flex;
   justify-content: center;
   height: 50px;
+}
+
+.HrDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.ReviewsPageBreak {
+  display: flex;
+  margin: 30px 0 0 0 ;
+  border: 1px solid rgb(65, 48, 15);
+  width: 90%;
 }

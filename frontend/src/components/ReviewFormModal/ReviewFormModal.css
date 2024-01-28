@@ -1,6 +1,7 @@
-.SignupForm {
+.ReviewForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .FormInput {
@@ -21,3 +22,9 @@
   color: lightblue;
 }
 
+#modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px 10px 10px;
+}

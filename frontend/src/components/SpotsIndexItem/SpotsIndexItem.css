@@ -14,6 +14,9 @@
 .ImageDiv {
   height: 75%;
   overflow: hidden;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+
 }
 
 .PreviewImage {

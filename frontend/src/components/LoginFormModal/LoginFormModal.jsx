@@ -37,6 +37,7 @@ function LoginFormModal() {
       <div className='LogInHeaderDiv'>
         <h1>Log In</h1>        
       </div>
+      {errors.message && <p className='LoginErrorMessage'>{errors.message}</p>}
       <form className='LoginForm' onSubmit={handleSubmit}>
         <label className='LogInFormInput'>
           <input
@@ -56,7 +57,7 @@ function LoginFormModal() {
             
           />
         </label>
-        {errors.message && <p className='LoginErrorMessage'>{errors.message}</p>}
+        
         <div className='SubmitButtonDiv'>
           <button className='LogInSubmitButton' type="submit" disabled={credential.length < 4 || password.length < 6}>Log In</button>
         </div>

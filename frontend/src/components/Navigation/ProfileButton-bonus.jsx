@@ -53,8 +53,7 @@ function ProfileButton({ user }) {
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div className='DropdownUsernameDiv'>Hello, {user.username}</div>
-            <div className='DropdownFullNameDiv'>{user.firstName} {user.lastName}</div>
+            <div className='DropdownUsernameDiv'>Hello, {user.firstName}</div>
             <div className='DropdownEmailDiv'>{user.email}</div>
             <div className='ManageSpotsButtonContainer'>
               <hr className='DropdownDivider' />
