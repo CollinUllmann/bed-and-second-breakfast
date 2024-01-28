@@ -43,6 +43,7 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulIdName = "profile-dropdown" + (user ? "-logged-in" : "-logged-out")
 
   return (
     <>
@@ -50,7 +51,7 @@ function ProfileButton({ user }) {
         <MdOutlineSegment />
         <i className="fas fa-user-circle" />
       </div>
-      <div className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef} id={ulIdName}>
         {user ? (
           <>
             <div className='DropdownUsernameDiv'>Hello, {user.firstName}</div>
@@ -77,7 +78,7 @@ function ProfileButton({ user }) {
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
+                modalComponent={<SignupFormModal onSignUpSucceed={()=>setShowMenu(true)}/>}
               />
             </div>
           </div>

@@ -75,11 +75,14 @@ router.delete('/', (_req, res) => {
 //get the current user
 router.get('/', (req, res) => {
   const { user } = req;
+  console.log('user: ', user)
   if (user) {
     const safeUser = {
       id: user.id,
       email: user.email,
       username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName
     };
     return res.json({
       user: safeUser

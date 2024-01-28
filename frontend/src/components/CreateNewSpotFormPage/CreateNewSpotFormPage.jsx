@@ -37,13 +37,17 @@ function CreateNewSpotFormPage() {
       console.log(validationErrors)
       return null
     }
+
+    let optionalLat = lat.length > 0 ? lat : '0'
+    let optionalLng = lng.length > 0 ? lng : '0'
+
     let newSpot = {
       address,
       city,
       state,
       country,
-      lat,
-      lng,
+      lat: optionalLat,
+      lng: optionalLng,
       description,
       name: title,
       price
@@ -85,8 +89,6 @@ function CreateNewSpotFormPage() {
     if (!address.length > 0) errors.address = 'Address is required'
     if (!city.length > 0) errors.city = 'City is required'
     if (!state.length > 0) errors.state = 'State is required'
-    if (!lat.length > 0) errors.lat = 'Lat is required'
-    if (!lng.length > 0) errors.lng = 'Lng is required'
     if (!description.length > 0 || description.length < 30) errors.description = 'Description needs a minimum of 30 characters'
     if (!title.length > 0) errors.title = 'Name is required'
     if (!price.length > 0) errors.price = 'Price is required'
@@ -179,7 +181,7 @@ function CreateNewSpotFormPage() {
             placeholder="Latitude"
             onChange={(e) => setLat(e.target.value)}
             name='latitude'
-            required
+            
           />
           
           <div className="CreateSpotSeparationComma"> , </div>
@@ -190,7 +192,7 @@ function CreateNewSpotFormPage() {
             placeholder="Longitude"
             onChange={(e) => setLng(e.target.value)}
             name='longitude'
-            required
+            
           />
           {hasSubmitted && validationErrors.lng && 
             <div>{validationErrors.lng}</div>

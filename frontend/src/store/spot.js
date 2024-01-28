@@ -120,7 +120,7 @@ function spotReducer(state = initialState, action) {
       return spotsState
     }
     case ADD_SPOT: {
-      return { ...state, entries: { ...state.entries, [action.spot.id]: action.spot } }
+      return { ...state, [action.spot.id]: action.spot }
     }
     case DELETE_SPOT: {
       const spotsState = { ...state };

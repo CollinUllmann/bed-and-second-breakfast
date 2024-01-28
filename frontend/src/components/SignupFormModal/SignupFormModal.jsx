@@ -4,7 +4,7 @@ import { useModal } from '../../context/Modal';
 import * as sessionActions from '../../store/session';
 import './SignupFormModal.css';
 
-function SignupFormModal() {
+function SignupFormModal({onSignUpSucceed}) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -36,7 +36,11 @@ function SignupFormModal() {
           password
         })
       )
-        .then(closeModal)
+        .then(() => {
+          onSignUpSucceed();
+          closeModal();
+
+        })
         .catch(async (res) => {
           const data = await res.json();
           if (data?.errors) {

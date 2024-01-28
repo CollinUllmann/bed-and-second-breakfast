@@ -1,6 +1,5 @@
 .profile-dropdown {
   position: absolute;
-  margin-top: 166px;
   list-style: none;
   background: rgb(241, 220, 177);
   border-bottom-left-radius: 10px;
@@ -10,6 +9,14 @@
   color: rgb(88, 67, 25);
   border: 2px solid rgb(88, 67, 25);
   z-index: 2;
+}
+
+#profile-dropdown-logged-in {
+  margin-top: 164px;
+}
+
+#profile-dropdown-logged-out {
+  margin-top: 182px;
 }
 
 .LoggedOutDropdownDiv {

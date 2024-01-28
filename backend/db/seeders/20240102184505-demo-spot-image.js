@@ -48,32 +48,32 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'https://artistmonkeys.com/wp-content/uploads/2023/09/Rivendell-beautiful-landscape-2.jpg',
+        url: '/rivendell/rivendell-1.png',
         preview: true
       },
       {
         spotId: 2,
-        url: 'https://www.msbarchitects.com/sites/default/files/frodo_bed_rivendell1-624x400.jpg',
+        url: '/rivendell/rivendell-2.png',
         preview: false
       },
       {
         spotId: 2,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/rivendell/rivendell-3.png',
         preview: false
       },
       {
         spotId: 2,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/rivendell/rivendell-4.png',
         preview: false
       },
       {
         spotId: 2,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/rivendell/rivendell-5.png',
         preview: false
       },
       {
         spotId: 3,
-        url: 'https://pm1.aminoapps.com/6598/64df5f0c151112e7cd202668b40d7bc3f21656a9_00.jpg',
+        url: '/weathertop/weathertop-1.png',
         preview: true
       },
       {
@@ -172,7 +172,7 @@ module.exports = {
       },
       {
         spotId: 7,
-        url: 'https://i.pinimg.com/originals/cf/ae/68/cfae6834c20cee3cc5c24d3153325b81.png',
+        url: '/osgiliath/osgiliath-1.png',
         preview: true
       },
       {
@@ -197,52 +197,52 @@ module.exports = {
       },
       {
         spotId: 8,
-        url: 'https://cdnb.artstation.com/p/assets/images/images/052/862/963/large/rogari-isengard14-shopped.jpg?1660842261',
+        url: '/isengard/isengard-1.png',
         preview: true
       },
       {
         spotId: 8,
-        url: 'https://i.pinimg.com/originals/d4/95/3e/d4953ed041cdf5d9240e1e9d911a7348.jpg',
+        url: '/isengard/isengard-2.png',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/isengard/isengard-3.png',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/isengard/isengard-4.png',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/isengard/isengard-5.png',
         preview: false
       },
       {
         spotId: 9,
-        url: 'https://preview.redd.it/how-did-sauron-construct-barad-d%C3%BBr-what-was-the-timescale-v0-68nnm70z5yyb1.jpg?auto=webp&s=b692db0c9c424e7abec6c06d5e44cbc88ba7285d',
+        url: '/barad-dur/barad-dur-1.png',
         preview: true
       },
       {
         spotId: 9,
-        url: 'https://i.pinimg.com/originals/22/12/2b/22122b723279cb255df3d25103ded54e.jpg',
+        url: '/barad-dur/barad-dur-2.png',
         preview: false
       },
       {
         spotId: 9,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/barad-dur/barad-dur-3.png',
         preview: false
       },
       {
         spotId: 9,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/barad-dur/barad-dur-4.png',
         preview: false
       },
       {
         spotId: 9,
-        url: 'https://i.pinimg.com/736x/58/2f/d3/582fd3d4d5229988180ad05622fb4c87.jpg',
+        url: '/barad-dur/barad-dur-5.png',
         preview: false
       }
 

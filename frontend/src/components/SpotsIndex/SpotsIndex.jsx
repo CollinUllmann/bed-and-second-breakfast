@@ -25,15 +25,10 @@ function SpotsIndex() {
         {
           spots?.map(spot => {
             return (
-              <>
-                {/* <div className='tooltip'>
-                    <span className='tooltiptext'>{spot.name}</span>
-                </div> */}
-                <div className='SpotsIndexItem tooltip' key={spot.id} onClick={() => navigate(`/spots/${spot.id}`)}>
-                  <span className='tooltiptext'>{spot.name}</span>
-                  <SpotsIndexItem spot={spot} ></SpotsIndexItem>
-                </div>
-              </>
+              <div className='SpotsIndexItem tooltip' key={spot.id} onClick={() => navigate(`/spots/${spot.id}`)}>
+                <span className='tooltiptext'>{spot.name}</span>
+                <SpotsIndexItem spot={spot} ></SpotsIndexItem>
+              </div>
             )
             }
           )
