@@ -43,7 +43,7 @@ function Reviews({spot}) {
       </span>
       {sessionUser && !(sessionUser?.id == spot.ownerId) && !includesCurrentUserReview && 
         <OpenModalButton
-              buttonText="Leave your review here..."
+              buttonText="Post Your Review"
               modalComponent={<ReviewFormModal spot={spot}/>}
             />
       }

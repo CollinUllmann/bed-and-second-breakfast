@@ -39,13 +39,20 @@ function ManageUserSpots() {
           userSpots?.map(spot => {
             return (
               <div key={spot.id} className='UserSpotsIndexItemAndButtonsContainer'>
-                <div className='UserSpotsIndexItem' onClick={() => navigate(`/spots/${spot.id}`)}><SpotsIndexItem spot={spot}></SpotsIndexItem></div>
-                <div className='ButtonContainer'>
-                  <button onClick={() => navigate(`/spots/${spot.id}/edit`)}>Update</button>
-                  <OpenModalButton
-                    buttonText="Delete"
-                    modalComponent={<DeleteSpotConfirmationModal spotId={spot?.id}/>}
-                  />
+                <div className='UserSpotsIndexItem' onClick={() => navigate(`/spots/${spot.id}`)}>
+                  <SpotsIndexItem spot={spot}></SpotsIndexItem>
+                  <div className='ButtonContainer'>
+                    <button className="UserSpotsButton" onClick={e => {
+                      e.stopPropagation();
+                      navigate(`/spots/${spot.id}/edit`)
+                    }}>Update</button>
+                    <div className="UserSpotsButton">
+                      <OpenModalButton
+                        buttonText="Delete"
+                        modalComponent={<DeleteSpotConfirmationModal spotId={spot?.id}/>}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             )

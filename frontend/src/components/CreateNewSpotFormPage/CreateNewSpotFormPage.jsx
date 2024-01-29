@@ -196,8 +196,8 @@ function CreateNewSpotFormPage() {
       <form onSubmit={handleSubmit} className="CreateSpotForm">
       <h1 id="CreateSpotFormTitle">{ spotId ? 'Update your Spot' : 'Create a New Spot' }</h1>
       <div className="CreateSpotFormDiv">
-        <h2>Where's your place located?</h2>
-        <div className="CreateSpotFormInputDescription">Guests will only get your exact address once they booked a reservation</div>
+        <h2>Where&apos;s your place located?</h2>
+        <div className="CreateSpotFormInputDescription">Guests will only get your exact address once they booked a reservation.</div>
         <div className="CreateSpotInputSection">
           <div className="CreateSpotRow">
             <div className="CreateSpotLabeledInput">
@@ -327,7 +327,7 @@ function CreateNewSpotFormPage() {
       </div>
       <div className="CreateSpotFormDiv">
         <h2>Create a title for your spot</h2>
-        <p className="CreateSpotFormInputDescription">Catch guests attention with a spot title that highlights what makes your place special.</p>
+        <p className="CreateSpotFormInputDescription">Catch guests&apos; attention with a spot title that highlights what makes your place special.</p>
         <div className="CreateSpotInputSection">
           <div className="CreateSpotRow">
             <div className="CreateSpotLabeledInput">
@@ -352,7 +352,7 @@ function CreateNewSpotFormPage() {
       </div>
       <div className="CreateSpotFormDiv">
         <h2>Set a base price for your spot</h2>
-        <p className="CreateSpotFormInputDescription">Competitive pricing can help your listing stand out and rank higher in search results</p>
+        <p className="CreateSpotFormInputDescription">Competitive pricing can help your listing stand out and rank higher in search results.</p>
         <div className="CreateSpotInputSection">
           <div className="CreateSpotRow">
             <div className="CreateSpotLabeledInput">
@@ -381,7 +381,7 @@ function CreateNewSpotFormPage() {
       </div>
       <div className="CreateSpotFormDiv">
         <h2>Liven up your spot with photos</h2>
-        <p className="CreateSpotFormInputDescription">Submit a link to at least one photo to publish your spot</p> 
+        <p className="CreateSpotFormInputDescription">Submit a link to at least one photo to publish your spot.</p> 
         <div className="CreateSpotInputSection">
           <div className="CreateSpotRow">
             <div className="CreateSpotLabeledInput">      
@@ -464,7 +464,7 @@ function CreateNewSpotFormPage() {
           </div>
         </div>
       </div>
-      <div id="CreateSpotSubmitButton" onClick={handleSubmit}>Create Spot</div>
+      <div id="CreateSpotSubmitButton" onClick={handleSubmit}>{ spotId ? 'Update your Spot' : 'Create Spot' }</div>
       </form>
     </div>
   )

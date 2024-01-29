@@ -39,7 +39,11 @@
 .ButtonContainer {
   display: flex;
   justify-content: center;
-  margin-top:10px;
+  margin:10px 0;
+}
+
+.UserSpotsButton {
+  margin: 0 10px;
 }
 
 .UserSpotsIndexItemAndButtonsContainer {

@@ -1,0 +1,14 @@
+.DeleteSpotConfirmationButtonContainer {
+  display: flex;
+  column-gap: 5px;
+}
+
+.DeleteSpotConfirmationButtonContainer .red {
+  background-color:red;
+  color: var(--theme-color-light);
+}
+
+.DeleteSpotConfirmationButtonContainer .grey {
+  background-color:darkgrey;
+  color: var(--theme-color-light);
+}

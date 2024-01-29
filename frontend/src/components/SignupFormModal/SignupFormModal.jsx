@@ -34,7 +34,6 @@ function SignupFormModal({onSignUpSucceed}) {
         .then(() => {
           onSignUpSucceed();
           closeModal();
-
         })
         .catch(async (res) => {
           const data = await res.json();
@@ -115,7 +114,7 @@ function SignupFormModal({onSignUpSucceed}) {
           />
         </label>
         <div className='SubmitButtonDiv'>
-          <button disabled={email.length < 1 || firstName.length < 1 || lastName.length < 1 || username.length < 1 || password.length < 1 || confirmPassword.length < 1} type="submit" className='SignUpSubmitButton'>Sign Up</button>
+          <button disabled={email.length < 1 || firstName.length < 1 || lastName.length < 1 || username.length < 4 || password.length < 6 || confirmPassword.length < 6} type="submit" className='SignUpSubmitButton'>Sign Up</button>
         </div>
       </form>
     </>

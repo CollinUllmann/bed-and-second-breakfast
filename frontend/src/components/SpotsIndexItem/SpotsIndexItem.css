@@ -44,23 +44,15 @@
   margin-left: 3px;
 }
 
+.SpotNight {
+  margin-left: 3px;
+  font-size: medium;
+  font-weight: 600;
+}
+
 .SpotRating {
   display:flex;
   flex-direction:row;
   font-size: larger;
   font-weight: 600;
-
 }
-
-
-/* .SpotName {
-  width: 100px
-}
-
-.SpotCityState {
-  width: 200px
-}
-
-.SpotPrice {
-  width: 100px
-} */

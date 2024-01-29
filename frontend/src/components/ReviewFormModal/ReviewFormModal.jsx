@@ -52,9 +52,7 @@ function ReviewFormModal({spot}) {
   return (
     <>
       <h1>How was your stay?</h1>
-      {hasSubmitted && Object.keys(errors).length > 0 && (
-        <div className="error">{errors.review}</div>
-      )}
+      {hasSubmitted ? Object.values(errors).map((error, index) => <div key={index} className="error">{error}</div>) : <></>}
       <form className='ReviewForm' onSubmit={handleSubmit}>
         <textarea
         className="ReviewFormTextArea"
@@ -81,7 +79,7 @@ function ReviewFormModal({spot}) {
         })}
         <h4>Stars</h4>
     </div>
-        <button disabled={Object.keys(errors).length > 0 || rating < 1 || review.length < 10}>Submit Your Review</button>
+        <button disabled={rating < 1 && review.length < 10}>Submit Your Review</button>
       </form>
     </>
   );

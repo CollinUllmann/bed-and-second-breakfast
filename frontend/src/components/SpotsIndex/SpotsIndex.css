@@ -1,7 +1,7 @@
 .SpotsIndexItemContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: start;
   margin: 0px 20px;
 }
 

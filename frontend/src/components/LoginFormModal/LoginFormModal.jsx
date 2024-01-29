@@ -37,7 +37,7 @@ function LoginFormModal() {
       <div className='LogInHeaderDiv'>
         <h1>Log In</h1>        
       </div>
-      {errors.message && <p className='LoginErrorMessage'>{errors.message}</p>}
+      {errors.message && <div className='LoginErrorMessage error'>{errors.message}</div>}
       <form className='LoginForm' onSubmit={handleSubmit}>
         <label className='LogInFormInput'>
           <input
