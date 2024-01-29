@@ -58,11 +58,11 @@ function ProfileButton({ user }) {
             <div className='DropdownEmailDiv'>{user.email}</div>
             <div className='ManageSpotsButtonContainer'>
               <hr className='DropdownDivider' />
-              <button onClick={() => navigate('/spots/current')}>Manage Spots</button>
+              <div className='ManageSpotsButton' onClick={() => navigate('/spots/current')}>Manage Spots</div>
             </div>
             <div className='LogoutButtonContainer'>
               <hr className='DropdownDivider' />
-              <button onClick={logout}>Log Out</button>
+              <div className='DropdownLogOutButton' onClick={logout}>Log Out</div>
             </div>
           </>
         ) : (

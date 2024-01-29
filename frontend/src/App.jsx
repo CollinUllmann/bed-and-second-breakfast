@@ -10,7 +10,6 @@ import * as sessionActions from './store/session';
 import SpotDetails from './components/SpotDetails';
 import ManageUserSpots from './components/ManageUserSpots/ManageUserSpots';
 import { Modal } from './context/Modal';
-import UpdateSpotFormPage from './components/UpdateSpotFormPage/UpdateSpotFormPage';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -61,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'spots/:spotId/edit',
-        element: <UpdateSpotFormPage />
+        element: <CreateNewSpotFormPage />
       }
     ]
   }

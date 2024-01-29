@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
       </div>
       <div className='CreateSpotAndProfileButtonContainer'>
         {sessionUser && (
-          <NavLink className={'CreateNewSpotLink'} to='spots/new'>Create New Spot</NavLink>
+          <NavLink className={'CreateNewSpotLink'} to='spots/new'>Create a New Spot</NavLink>
         )}
         {isLoaded && (
           <ProfileButton user={sessionUser} />

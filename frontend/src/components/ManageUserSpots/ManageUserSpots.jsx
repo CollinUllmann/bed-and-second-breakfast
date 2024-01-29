@@ -32,7 +32,7 @@ function ManageUserSpots() {
     <>
     <h1>Manage Your Spots</h1>
     {userSpots.length < 1 && 
-      <button onClick={() => navigate('/spots/new')}>Create New Spot</button>    
+      <button onClick={() => navigate('/spots/new')}>Create a New Spot</button>    
     }
       <div className='UserSpotsIndexItemContainer' >
         {

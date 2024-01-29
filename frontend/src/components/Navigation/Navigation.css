@@ -6,13 +6,13 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  color: rgb(88, 67, 25);
-  border: 2px solid rgb(88, 67, 25);
+  color: var(--theme-color-dark);
+  border: 2px solid var(--theme-color-dark);
   z-index: 2;
 }
 
 #profile-dropdown-logged-in {
-  margin-top: 164px;
+  margin-top: 186px;
 }
 
 #profile-dropdown-logged-out {
@@ -62,7 +62,7 @@
 .ProfileButton {
   width: 60px;
   margin-left: 5px;
-  border: 2px solid black;
+  border: 2px solid var(--theme-color-dark);
   border-bottom-left-radius: 20% 50%;
   border-top-left-radius: 20% 50%;
   border-top-right-radius: 20% 50%;
@@ -71,7 +71,7 @@
   justify-content: center;
   align-items: center;
   height: 25px;
-  background-color: white;
+  background-color: var(--theme-color-light);
 }
 .ProfileButton:hover {
   cursor: pointer;
@@ -92,8 +92,41 @@
   margin-bottom: 10px;
 }
 
+.DropdownLogOutButton {
+  border-radius: 5px;
+  background-color: var(--theme-color-light);
+  border: 1px solid var(--theme-color-dark);
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 30px;
+  color: var(--theme-color-dark);
+}
+.DropdownLogOutButton:hover {
+  cursor: pointer;
+}
+
+.ManageSpotsButton {
+  border-radius: 5px;
+  background-color: var(--theme-color-light);
+  border: 1px solid var(--theme-color-dark);
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 30px;
+  color: var(--theme-color-dark);
+}
+.ManageSpotsButton:hover {
+  cursor: pointer;
+}
+
 .DropdownDivider {
   width: 75%;
+  margin-top: 5px;
 }
 
 .DropdownUsernameDiv {
@@ -110,15 +143,15 @@
 
 .DropdownLogInButton {
   border-radius: 5px;
-  background-color: white;
-  border: 1px solid black;
+  background-color: var(--theme-color-light);
+  border: 1px solid var(--theme-color-dark);
   width: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
   height: 30px;
-  color: black;
+  color: var(--theme-color-dark);
 }
 .DropdownLogInButton:hover {
   cursor: pointer;
@@ -126,15 +159,15 @@
 
 .DropdownSignUpButton {
   border-radius: 5px;
-  background-color: white;
-  border: 1px solid black;
+  background-color: var(--theme-color-light);
+  border: 1px solid var(--theme-color-dark);
   width: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5px;
   height: 30px;
-  color: black;
+  color: var(--theme-color-dark);
 }
 .DropdownSignUpButton:hover {
   cursor: pointer;

@@ -13,7 +13,8 @@
 }
 
 .LogInFormInput {
-  margin: 5% 50px;
+  width: 100%;
+  margin: 5px 0;
   display: flex;
   justify-content: center;
 }

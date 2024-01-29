@@ -2,10 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .FormInput {
   margin: 5% 0;
+}
+
+.ReviewFormTextArea {
+  width: 100%;
 }
 
 .rating-input {
@@ -15,11 +20,11 @@
 }
 
 .rating-input .filled {
-  color: blue;
+  color: rgb(204, 156, 67);
 }
 
 .rating-input .empty {
-  color: lightblue;
+  color: var(--theme-color-dark);
 }
 
 #modal-content {

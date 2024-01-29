@@ -2,7 +2,7 @@
   aspect-ratio: 1.25;
   width: 22%;
   margin: 10px;
-  border: 3px solid rgb(88, 67, 25);
+  border: 3px solid var(--theme-color-dark);
   min-width: 200px;
   color: rgb(65, 48, 15);
   display: flex;

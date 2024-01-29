@@ -120,7 +120,7 @@ module.exports = {
       {
         ownerId: 9,
         address: '30 miles east of Mount Doom',
-        city: 'Mordor',
+        city: 'Gorgoroth',
         state: 'Mordor',
         country: 'Middle-earth',
         lat: 40.7128,

@@ -53,13 +53,14 @@ function ReviewFormModal({spot}) {
     <>
       <h1>How was your stay?</h1>
       {hasSubmitted && Object.keys(errors).length > 0 && (
-        <div>{errors.review}</div>
-
+        <div className="error">{errors.review}</div>
       )}
       <form className='ReviewForm' onSubmit={handleSubmit}>
         <textarea
+        className="ReviewFormTextArea"
         placeholder='Leave your review here...'
         value={review}
+        rows={5}
         onChange={(e) => setReview(e.target.value)}
         name='review'
         />
@@ -80,7 +81,7 @@ function ReviewFormModal({spot}) {
         })}
         <h4>Stars</h4>
     </div>
-        <button disabled={Object.keys(errors).length > 0 || rating < 1}>Submit Your Review</button>
+        <button disabled={Object.keys(errors).length > 0 || rating < 1 || review.length < 10}>Submit Your Review</button>
       </form>
     </>
   );

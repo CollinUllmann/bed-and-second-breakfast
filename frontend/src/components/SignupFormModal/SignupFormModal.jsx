@@ -16,11 +16,6 @@ function SignupFormModal({onSignUpSucceed}) {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const { closeModal } = useModal();
 
-  useEffect(() => {
-    username.length < 4 ? setErrors({username: 'Username must be at least 4 characters'}) : delete errors.username
-    password.length < 6 ? setErrors({password: 'Password must be at least 6 characters'}) : delete errors.password
-  }, [username, password, errors.password, errors.username])
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true)
@@ -57,29 +52,14 @@ function SignupFormModal({onSignUpSucceed}) {
     <>
       <div className='SignUpHeaderDiv'>
         <h1>Sign Up</h1>
-        
       </div>
       <form className='SignupForm' onSubmit={handleSubmit}>
-        <label className='SignUpFormInput'>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
-            required
-          />
-        </label>
-        {errors.email && <p className='SignUpErrorMessage'>{errors.email}</p>}
-        <label className='SignUpFormInput'>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder='Username'
-            required
-          />
-        </label>
-        {hasSubmitted && errors.username && <p className='SignUpErrorMessage'>{errors.username}</p>}
+        {errors.firstName && <div className='SignUpErrorMessage error'>{errors.firstName}</div>}
+        {errors.lastName && <div className='SignUpErrorMessage error'>{errors.lastName}</div>}
+        {errors.email && <div className='SignUpErrorMessage error'>{errors.email}</div>}
+        {hasSubmitted && errors.username && <div className='SignUpErrorMessage error'>{errors.username}</div>}
+        {hasSubmitted && errors.password && <div className='SignUpErrorMessage error'>{errors.password}</div>}
+        {errors.confirmPassword && <div className='SignUpErrorMessage error'>{errors.confirmPassword}</div>}
         <label className='SignUpFormInput'>
           <input
             type="text"
@@ -89,7 +69,6 @@ function SignupFormModal({onSignUpSucceed}) {
             required
           />
         </label>
-        {errors.firstName && <p className='SignUpErrorMessage'>{errors.firstName}</p>}
         <label className='SignUpFormInput'>
           <input
             type="text"
@@ -99,7 +78,24 @@ function SignupFormModal({onSignUpSucceed}) {
             required
           />
         </label>
-        {errors.lastName && <p className='SignUpErrorMessage'>{errors.lastName}</p>}
+        <label className='SignUpFormInput'>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
+            required
+          />
+        </label>
+        <label className='SignUpFormInput'>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder='Username'
+            required
+          />
+        </label>
         <label className='SignUpFormInput'>
           <input
             type="password"
@@ -109,7 +105,6 @@ function SignupFormModal({onSignUpSucceed}) {
             required
           />
         </label>
-        {hasSubmitted && errors.password && <p className='SignUpErrorMessage'>{errors.password}</p>}
         <label className='SignUpFormInput'>
           <input
             type="password"
@@ -119,9 +114,8 @@ function SignupFormModal({onSignUpSucceed}) {
             required
           />
         </label>
-        {errors.confirmPassword && <p className='SignUpErrorMessage'>{errors.confirmPassword}</p>}
         <div className='SubmitButtonDiv'>
-          <button disabled={errors.username || errors.password || email.length < 1 || firstName.length < 1 || lastName.length < 1 || confirmPassword.length < 1} type="submit" className='SignUpSubmitButton'>Sign Up</button>
+          <button disabled={email.length < 1 || firstName.length < 1 || lastName.length < 1 || username.length < 1 || password.length < 1 || confirmPassword.length < 1} type="submit" className='SignUpSubmitButton'>Sign Up</button>
         </div>
       </form>
     </>
